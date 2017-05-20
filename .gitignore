@@ -110,3 +110,6 @@ typings/
 
 # dotenv environment variables file
 .env
+
+# IDE folders
+.idea
