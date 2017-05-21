@@ -21,6 +21,7 @@
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "mongodb": "^2.2.26",
-    "mongoose": "^4.10.0"
+    "mongoose": "^4.10.0",
+    "pug": "^2.0.0-rc.1"
   }
 }
