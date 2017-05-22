@@ -1,12 +1,12 @@
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
 
-var rentalCarSchema = new Schema({
+var rentalCarSchema = new mongoose.Schema({
     brand: String,
     auto: Boolean,
-    pricPerDay: Number,
+    priceperday: Number,
+    seats: Number,
     towbar: Boolean,
-    seats: String
+    booked: Boolean
 });
 
 var rentalCar = mongoose.model('rentalCar', rentalCarSchema);
