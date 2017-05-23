@@ -1,5 +1,6 @@
 const router = require('express').Router();
 
+
 /*** Routes exports ***/
 //you can simulate post,delete and patch requests with the "postman" software. https://www.getpostman.com/
 
@@ -21,7 +22,7 @@ module.exports = (rentalCar) => {
             if(err)
                 console.log(err);
 
-            response.send(cars);
+            response.render('index', { title: 'Hey', message: cars})
         })
     });
 

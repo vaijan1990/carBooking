@@ -4,6 +4,9 @@ const bodyParser = require('body-parser');
 const app = express();
 const mongoose = require('mongoose');
 
+/*** Configuration ***/
+app.set('view engine', 'pug');
+
 /*** Models Imports ***/
 var rentalCar = require('./models/rentalCar');
 
@@ -19,7 +22,7 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 // set the public folder to be used when serving static js, css files to the client browser
-app.use('/public', express.static('public'));
+app.use(express.static(__dirname + '/public'));
 
 //this is set so that every route in carCollectionRoute.js uses through localhost:3000/cars
 app.use('/cars', carRoutes);
