@@ -4,6 +4,9 @@ const bodyParser = require('body-parser');
 const app = express();
 const mongoose = require('mongoose');
 
+/*** Configuration ***/
+app.set('view engine', 'pug');
+
 /*** Models Imports ***/
 var rentalCar = require('./models/rentalCar');
 
