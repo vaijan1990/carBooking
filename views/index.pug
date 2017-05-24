@@ -1,30 +1,58 @@
 html
   head
+    
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    meta(name='description' content='')
+    meta(name='author' content='Grupp 9')
+    
     title= title
-    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css', type='text/css')
-    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/css/tether.css', type='text/css')
-    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', type='text/css')
-    link(rel='stylesheet', href='public/dependencies/theme-freelancer/freelancer.min.css', type='text/css')
+    
+    link(rel='stylesheet', href='public/vendor/bootstrap/css/bootstrap.min.css', type='text/css')
+    //link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/css/tether.css', type='text/css')
+    link(rel='stylesheet', href='public/vendor/theme-freelancer/freelancer.min.css', type='text/css')
+    link(rel='stylesheet', href='public/vendor/font-awesome/css/font-awesome.min.css', type='text/css')
     link(rel='stylesheet', href='public/main.min.css', type='text/css')
-  body
+    link(href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css')
+    link(href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css')
 
-    header
-      h1 Car Rental Company or smt
-      nav
-        h1 nav bar
-    section
-      h1 Main content block
-      p= message
-    footer
-      p Footer
+  body(id='page-top' class='index')
+    
+    div(id='skipnav')
+      a(href='#maincontent') Skip to main content
+
+    nav(id='mainNav' class='navbar navbar-default navbar-fixed-top navbar-custom')
+      div(class='container')
+        div(class='navbar-header page-scroll')
+          button(type='button' class='navbar-toggle' data-toggle='collapse' data-target='#main-navbar-collapse')
+            span(class='sr-only') Toggle navigation
+            .
+              Menu
+            i(class='fa fa-bars')
+          a(class='navbar-brand' href='#page-top') World Best Auto Rentals
+        
+        div(class='collapse navbar-collapse' id='#main-navbar-collapse')
+          ul(class='nav navbar-nav navbar-right')
+            li(class='hidden')
+              a(href='#page-top')
+            li(class='page-scroll')
+              a(href='#ourcars') Our cars
+            li(class='page-scroll')
+              a(href='#aboutus') About us
+            li(class='page-scroll')
+              a(href='#login') Login
+
+
+        
+    
 
 
 
 
-
-    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
-    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js')
-    script(src='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.js')
-    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js')
-    script(src='public/dependencies/theme-freelancer/freelancer.min.js')
+    script(src='public/vendor/jquery/jquery.min.js')
+    //script(src='public/dependencies/theme-freelancer/js/tether.js')
+    script(src='public/vendor/bootstrap/js/bootstrap.min.js')
+    script(src='public/vendor/jquery-easing/jquery.easing.js')
+    script(src='public/vendor/theme-freelancer/freelancer.min.js')
     script(src='public/main.js')
