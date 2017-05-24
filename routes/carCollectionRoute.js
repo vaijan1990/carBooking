@@ -21,8 +21,7 @@ module.exports = (rentalCar) => {
         rentalCar.find({},(err, cars) => {
             if(err)
                 console.log(err);
-
-            response.render('index', { title: 'Hey', message: cars})
+            response.send(cars);
         })
     });
 
