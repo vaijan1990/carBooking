@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "main.min.css",
+	"sources": [
+		"scss/main.scss"
+	],
+	"sourcesContent": [
+		"body {\r\n  overflow: auto;\r\n  position: relative; \r\n}\r\n"
+	],
+	"mappings": "AAAA,AAAA,IAAI,AAAC,CACH,QAAQ,CAAE,IAAK,CACf,QAAQ,CAAE,QAAS,CACpB",
+	"names": []
+}
