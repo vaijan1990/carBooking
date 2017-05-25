@@ -32,7 +32,7 @@ module.exports = (rentalCar) => {
             if(err)
                 console.log(err);
 
-            response.send(cars);
+            response.send(cars );
         })
     });
 
@@ -68,8 +68,6 @@ module.exports = (rentalCar) => {
         car.save((err, result) => {
             if(err)
                 console.log(err);
-
-            console.log(result);
             response.send(result);
         })
     });

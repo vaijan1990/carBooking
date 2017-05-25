@@ -36,7 +36,7 @@ mongoose.connect(url);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
-    console.log("we are connected");
+    console.log("Connected to database");
 });
 
 //hide warning message about promises
@@ -45,3 +45,6 @@ mongoose.Promise = global.Promise;
 app.listen(port, function() {
     console.log('Example app listening on port 3000!');
 });
+
+// this exports the routes to the endpointTest.js file
+module.exports = app;
