@@ -1,4 +1,13 @@
 body {
   overflow: auto;
-  position: relative; 
+  position: relative;
+}
+
+.modal-dialog {
+  background-color: #18bc9c;
+  border-radius: 5px;
+}
+
+#register-link{
+  font-size: 10px;
 }
