@@ -5,17 +5,20 @@ const router = require('express').Router();
 //you can simulate post,delete and patch requests with the "postman" software. https://www.getpostman.com/
 
 
-    router.use(function (req,res,next) {
-        console.log("/" + req.method);
-        next();
-    });
-    router.get('/', (request, response) => {
+module.exports = (customerDetail) => {
+  router.use(function (req,res,next) {
+      console.log("/" + req.method);
+      next();
+  });
 
-        customerDetail.find({},(err, customers) => {
-            if(err)
-                console.log(err);
-            response.send(customers);
-        })
-    });
+  router.get('/', (request, response) => {
 
-module.exports = router;
+      customerDetail.find({},(err, customers) => {
+          if(err)
+              console.log(err);
+          response.send(customers);
+      })
+  });
+
+  return router;
+}
