@@ -9,7 +9,7 @@ const router = require('express').Router();
         console.log("/" + req.method);
         next();
     });
-    router.get('/customers', (request, response) => {
+    router.get('/', (request, response) => {
 
         customerDetail.find({},(err, customers) => {
             if(err)

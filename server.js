@@ -13,7 +13,7 @@ var customerDetail = require('./models/customerDetail');
 
 /*** Routes import ***/
 var carRoutes = require('./routes/carCollectionRoute')(rentalCar);
-// var customerRoutes = require('./routes/customerCollectionRoute')(customerDetail);
+var customerRoutes = require('./routes/customerCollectionRoute')(customerDetail);
 var viewRoutes = require('./routes/viewRoute');
 
 
@@ -30,6 +30,7 @@ app.use('/public', express.static(__dirname + '/public'));
 
 //this is set so that every route in carCollectionRoute.js uses through localhost:3000/cars
 app.use('/cars', carRoutes);
+app.use('/customers', customerRoutes);
 
 
 //route views/pages for main folder /
