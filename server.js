@@ -24,6 +24,7 @@ app.use(bodyParser.urlencoded({
 }));
 // set the public folder to be used when serving static js, css files to the client browser
 app.use('/public', express.static(__dirname + '/public'));
+app.set('views', './views');
 
 //this is set so that every route in carCollectionRoute.js uses through localhost:3000/cars
 app.use('/cars', carRoutes);

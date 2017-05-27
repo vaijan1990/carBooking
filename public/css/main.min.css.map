@@ -1,12 +1,7 @@
 {
-	"version": 3,
-	"file": "main.min.css",
-	"sources": [
-		"scss/main.scss"
-	],
-	"sourcesContent": [
-		"body {\r\n  overflow: auto;\r\n  position: relative; \r\n}\r\n"
-	],
-	"mappings": "AAAA,AAAA,IAAI,AAAC,CACH,QAAQ,CAAE,IAAK,CACf,QAAQ,CAAE,QAAS,CACpB",
-	"names": []
+"version": 3,
+"mappings": "AAAA,IAAK,CACH,QAAQ,CAAE,IAAI,CACd,QAAQ,CAAE,QAAQ,CAGpB,aAAc,CACZ,gBAAgB,CAAE,OAAO,CACzB,aAAa,CAAE,GAAG,CAGpB,cAAc,CACZ,SAAS,CAAE,IAAI",
+"sources": ["scss/main.scss"],
+"names": [],
+"file": "main.min.css"
 }
