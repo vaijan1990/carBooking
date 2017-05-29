@@ -14,7 +14,7 @@ router.use(function (req, res, next) {
 
 // Find all the cars in the collection. this route will be localhost:3000/cars
 router.get('/', (request, response) => {
-    response.render('index', {title: 'Hey'})
+    response.render('index', {title: 'car rental service', message: 'message'})
 });
 
 // the login form request is sent to this route
