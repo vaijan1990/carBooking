@@ -1,10 +1,10 @@
 div(class='intro-text text-center')
-  h1 Rent your car now
-  form(action="/test" method="POST" name="checkAvailibilty" id="checkAvailibilty")
+  h1 Rent your car now!!
+  form(action="/cars/available" method="GET" name="checkAvailibilty" id="checkAvailibilty")
     div(class='input-group input-daterange justify-content-center')
-      input(data-provide='datepicker' name="date[from-in]" id='datepicker-from')
+      input(data-provide='datepicker' name="date[from-in]" id='datepicker-from' placeholder='Start Date')
       input(data-provide='datepicker' name="date[from]" id='datepicker-from-hidden' type='hidden')
       div(class='input-group-addon') &nbsp;to&nbsp;
-      input(data-provide='datepicker' name="date[to-in]" id='datepicker-to')
+      input(data-provide='datepicker' name="date[to-in]" id='datepicker-to' placeholder='End Date')
       input(data-provide='datepicker' name="date[to]" id='datepicker-to-hidden'  type='hidden')
     button(type='submit') Check availibitly
