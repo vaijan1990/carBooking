@@ -1,0 +1,19 @@
+div(class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true")
+    div(class="modal-dialog" role="document")
+        div(class="modal-content")
+            div(class="modal-header")
+                label(class="modal-title" id="exampleModalLabel") Login to your account
+                span(id="register-link") don't have an account ? register
+                    a(href="/register")|  here
+                button(type="button" class="close" data-dismiss="modal" aria-label="close modal")
+                    span(aria-hidden="true") &times;
+        div(class="modal-body")
+            form( id="login-form" action="/login" method="get")
+                div(class="form-group")
+                    label(for="recipient-name" class="form-control-label")
+                    input(type="text" class="form-control" id="recipient-name" placeholder="e-mail")
+                div(class="form-group")
+                    input(type="text" class="form-control" placeholder="password" name="login")
+        div(class="modal-footer")
+            button( type="submit" class="btn btn-primary" form="login-form") Login
+
