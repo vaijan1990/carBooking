@@ -1,0 +1,26 @@
+extends index.pug
+
+block registerForm
+    div(class="container")
+        div(class="row")
+            div(class="col-md-6 col-lg-7")
+                div(class="card card-block")
+                    h3(class="text-xs-center") Register Account
+                    hr
+                    div(class="alert alert-danger")
+                        a(class="close" data-dismiss='alert', href='#') ×
+                        | Password is too short.
+                    form(action="registeruser" method="post")
+                        fieldset
+                            div(class="form-group has-success")
+                                input(class="form-control input-lg" id="fullname" placeholder="Full Name" name="name" value="" type="text")
+                            div(class="form-group has-error")
+                                input(class="form-control input-lg" placeholder="E-mail Address" name="email" type="text")
+                            div(class="form-group has-success")
+                                input(class="form-control input-lg" placeholder="Username" name="username" value="" type="text")
+                            div(class="form-group has-error")
+                                input(class="form-control input-lg" placeholder="Password" name="password" value="" type="password")
+                            div(class="form-group has-success")
+                                input(class="form-control input-lg" placeholder="Confirm Password" name="password2" value="" type="password")
+
+                            input(class="btn btn-lg btn-primary btn-block" value='Sign Me Up' id="sign_up" type='submit')

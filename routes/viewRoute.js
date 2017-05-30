@@ -14,23 +14,7 @@ router.use(function (req, res, next) {
 
 // Find all the cars in the collection. this route will be localhost:3000/cars
 router.get('/', (request, response) => {
-    response.render('index', {title: 'Hey'})
+    response.render('index', {title: 'Hey', loginText: "Login"})
 });
-
-// the login form request is sent to this route
-router.get('/login', (request, response) => {
-    // check if the customer is in the database and the render appropriate view depending on the result.
-    // render the index view again, but with the login button changed to logged in. or smth else..
-    response.render('index')
-});
-
-// when a customer wants to become a member they're sent here
-router.get('/register', (request, response) => {
-    // render the register form to the client here
-    response.send("render a register form here")
-});
-
-
-
 
 module.exports = router;
