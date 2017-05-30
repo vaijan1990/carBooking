@@ -25,7 +25,10 @@ html
         i(class='fa fa-bars')
         
       div(class='container')
-        a(class='navbar-brand' href='#page-top') World's Best Auto Rentals
+        a(class='navbar-brand' href='#page-top') Car Rental
+          |
+          |
+          em Supreme
         div(class='collapse navbar-collapse' id='main-navbar-collapse')
           ul(class='navbar-nav ml-auto')
             li(class='nav-item')
@@ -33,9 +36,9 @@ html
             li(class='nav-item')
               a(href='#aboutus' class='nav-link') About us
             li(class='nav-item')
-              a(href='#login' class='nav-link') Login
+              a(id="loginId" class='nav-link' data-toggle="modal" data-target="#exampleModal") Login
 
-    
+    include loginform
     block header
     block main-content
   
@@ -94,5 +97,6 @@ html
     script(src='public/vendor/bootstrap/js/bootstrap.min.js')
     script(src='public/vendor/jquery-easing/jquery.easing.js')
     script(src='public/vendor/theme-freelancer/freelancer.min.js')
+    script(src='public/js/bootstrapModal.js')
     script(src='public/js/main.js')
     block extra-js
