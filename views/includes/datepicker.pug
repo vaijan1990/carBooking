@@ -1,0 +1,8 @@
+div(class='intro-text text-center')
+  h1 Rent your car now
+  form(action="/test" method="POST" name="checkAvailibilty")
+    div(class='input-group input-daterange justify-content-center')
+      input(data-provide='datepicker' name="date[from]")
+      div(class='input-group-addon') &nbsp;to&nbsp;
+      input(data-provide='datepicker' name="date[to]")
+    button(type='submit') Check availibitly

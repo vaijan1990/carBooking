@@ -5,7 +5,7 @@
 		"scss/main.scss"
 	],
 	"sourcesContent": [
-		"body {\r\n  overflow: auto;\r\n  position: relative;\r\n}\r\n\r\n.modal-dialog {\r\n  background-color: #18bc9c;\r\n  border-radius: 5px;\r\n}\r\n\r\n#register-link{\r\n  font-size: 10px;\r\n}\r\n"
+		"body {\r\n  overflow: auto;\r\n  position: relative;\r\n}\r\n\r\n.modal-dialog {\r\n  background-color: #18bc9c;\r\n  border-radius: 5px;\r\n}\r\n\r\n#register-link{\r\n  font-size: 10px;\r\n} \r\n"
 	],
 	"mappings": "AAAA,AAAA,IAAI,AAAC,CACH,QAAQ,CAAE,IAAK,CACf,QAAQ,CAAE,QAAS,CACpB,AAED,AAAA,aAAa,AAAC,CACZ,gBAAgB,CAAE,OAAQ,CAC1B,aAAa,CAAE,GAAI,CACpB,AAED,AAAA,cAAc,AAAA,CACZ,SAAS,CAAE,IAAK,CACjB",
 	"names": []

@@ -23,8 +23,10 @@ const port = process.env.PORT || 3000;
 
 /*** App "usages" ***/
 app.use(bodyParser.urlencoded({
-  extended: false
+  extended: true
 }));
+app.use(bodyParser.json());
+
 // set the public folder to be used when serving static js, css files to the client browser
 app.use('/public', express.static(__dirname + '/public'));
 app.set('views', './views');

@@ -31,6 +31,11 @@ router.get('/register', (request, response) => {
 });
 
 
+// test post data
+router.post('/test', (request, response) => {
+  console.log(request.body.date.from);
+  console.log(request.body.date.to);
+});
 
 
 module.exports = router;
