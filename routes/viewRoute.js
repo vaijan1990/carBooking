@@ -1,6 +1,5 @@
 const router = require('express').Router();
 
-
 /*** Routes exports ***/
 
 /*This is the root middle layer which will be executed before any other routes.
@@ -14,7 +13,11 @@ router.use(function (req, res, next) {
 
 // Find all the cars in the collection. this route will be localhost:3000/cars
 router.get('/', (request, response) => {
-    response.render('index', {title: 'Hey', loginText: "Login"})
+    response.render('index', {title: 'Hey'})
+});
+
+router.get('/loggedin', (request, response) => {
+    response.render('index', {title: 'Hey'})
 });
 
 module.exports = router;

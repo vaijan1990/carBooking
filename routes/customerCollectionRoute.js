@@ -1,12 +1,13 @@
 const router = require('express').Router();
+const passport = require('../config/passportConfig');
 
-
-/*** Routes exports ***/
-//you can simulate post,delete and patch requests with the "postman" software. https://www.getpostman.com/
+// const passport = require('passport');
+// const LocalStrategy = require('passport-local').Strategy;
 
 
 module.exports = (customerDetail) => {
 
+    //DON'T erase the below code yet !
     //middleware function. checks if a user is logged in
     // const isLoggedIn = (req, res, next) => {
     //     if (req.isAuthenticated()) return next(); //go through
@@ -19,41 +20,41 @@ module.exports = (customerDetail) => {
         next();
     });
 
-    // router.get('/', (request, response) => {
-    //
-    //     customerDetail.find({}, (err, customers) => {
-    //         if (err)
-    //             console.log(err);
-    //         response.send(customers);
-    //     })
-    // });
+    router.get('/', (request, response) => {
 
-    router.get('/profile', (request, response) => {
-        response.send("the profile view")
+        customerDetail.find({}, (err, customers) => {
+            if (err)
+                console.log(err);
+            response.send(customers);
+        })
     });
 
     router.get('/loginfail', (request, response) => {
-
-        response.send('nåt gick fel');
+        response.render("index");
     });
 
-    router.get('/login', (request, response) => {
-        response.send('this is the login screen');
+    router.get('/loggedout', (request, response) => {
+        response.render('index');
+    });
+
+    //customer gets sent here when the registration is done
+    router.get('/registered', (request, response) => {
+        response.render('registrationdone');
     });
 
     //when click on register link
     router.get('/register', (request, response) => {
-        response.render('registerForm', {loginText: "Login"});
+        response.render('registerForm');
     });
 
     //check login
-    router.post('/registeruser', (request, response) =>{
+    router.post('/registeruser', (request, response) => {
         var name = request.body.name;
         var email = request.body.email;
         var username = request.body.username;
+        var phone = request.body.phone;
         var password = request.body.password;
         var password2 = request.body.password2;
-        // response.redirect('profile');
 
         //Validation
         request.checkBody('name', 'Name is required').notEmpty();
@@ -64,35 +65,45 @@ module.exports = (customerDetail) => {
         request.checkBody('password2', 'Passwords do not match').equals(request.body.password);
 
         var errors = request.validationErrors();
-        if(errors)
-            response.redirect('register');
-        else
-            console.log("OK");
 
+        if (errors) {
+            console.log(errors);
+            response.render('registerForm', {errors: errors});
+        }
+
+        else {
+
+            var newCustomer = new customerDetail({
+                name: name,
+                email: email,
+                phone: phone,
+                username: username,
+                password: password
+            });
+            customerDetail.createUser(newCustomer, (err, user) => {
+                if (err) throw err;
+                console.log(user);
+            });
+
+            request.flash('success_msg', 'you registered successfully and can now log in ');
+            response.redirect('registered');
+        }
     });
 
-    //Register a new member
-    // router.post('/register', (req, res) => {
-    //
-    //     //insert the neccessary property fields in the new customer, phone, email etc later
-    //     customerDetail.register(new customerDetail({
-    //             name: req.body.name,
-    //             phone: req.body.phone,
-    //             username: req.body.email
-    //         }),
-    //         customerDetail.encryptPassword("test"), (error, user) => {
-    //
-    //             if (error) {
-    //                 console.log('error while logging in: ', error);
-    //                 res.render('register', {user: req.user});
-    //             }
-    //             passport.authenticate('local')(req, res, () => {
-    //                 redirectUrl = req.user.set('/login');
-    //                 console.log(redirectUrl);
-    //                 res.redirect(redirectUrl); //on success, redirect with req.user set
-    //             });
-    //         });
-    // });
+    // login
+    router.post('/login',
+        passport.authenticate('local', {successRedirect: '/', failureRedirect: '/', failureFlash: true}),
+
+        (request, response) => {
+            response.redirect('/');
+        }
+    );
+
+    router.get('/logout', (request, response) => {
+        request.logout();
+        request.flash('success_msg', 'you are logged out');
+        response.redirect('/')
+    });
 
     return router;
 };

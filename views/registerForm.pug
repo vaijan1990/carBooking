@@ -1,26 +1,31 @@
-extends index.pug
+extends registerformLayout.pug
 
-block registerForm
+block register
     div(class="container")
+        #errors
+          if errors
+            each error in errors
+              div(class="alert alert-danger")
+                a(class="close" data-dismiss="alert" href="#") x
+                p=error.msg
         div(class="row")
-            div(class="col-md-6 col-lg-7")
+            div(class="col-md-6 col-lg-7 mx-auto")
                 div(class="card card-block")
                     h3(class="text-xs-center") Register Account
                     hr
-                    div(class="alert alert-danger")
-                        a(class="close" data-dismiss='alert', href='#') ×
-                        | Password is too short.
                     form(action="registeruser" method="post")
                         fieldset
-                            div(class="form-group has-success")
+                            div(class="form-group")
                                 input(class="form-control input-lg" id="fullname" placeholder="Full Name" name="name" value="" type="text")
-                            div(class="form-group has-error")
+                            div(class="form-group")
                                 input(class="form-control input-lg" placeholder="E-mail Address" name="email" type="text")
-                            div(class="form-group has-success")
+                            div(class="form-group")
+                                input(class="form-control input-lg" placeholder="Phone" name="phone" type="text")
+                            div(class="form-group")
                                 input(class="form-control input-lg" placeholder="Username" name="username" value="" type="text")
-                            div(class="form-group has-error")
+                            div(class="form-group")
                                 input(class="form-control input-lg" placeholder="Password" name="password" value="" type="password")
-                            div(class="form-group has-success")
+                            div(class="form-group")
                                 input(class="form-control input-lg" placeholder="Confirm Password" name="password2" value="" type="password")
 
                             input(class="btn btn-lg btn-primary btn-block" value='Sign Me Up' id="sign_up" type='submit')

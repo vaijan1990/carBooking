@@ -9,11 +9,11 @@ html
     
     title #{title} - Car Rental Supreme
     
-    link(rel='stylesheet', href='public/vendor/bootstrap/css/bootstrap.min.css', type='text/css')
+    link(rel='stylesheet', href='vendor/bootstrap/css/bootstrap.min.css', type='text/css')
     //link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/css/tether.css', type='text/css')
-    link(rel='stylesheet', href='public/vendor/theme-freelancer/freelancer.min.css', type='text/css')
-    link(rel='stylesheet', href='public/vendor/font-awesome/css/font-awesome.min.css', type='text/css')
-    link(rel='stylesheet', href='public/main.min.css', type='text/css')
+    link(rel='stylesheet', href='vendor/theme-freelancer/freelancer.min.css', type='text/css')
+    link(rel='stylesheet', href='vendor/font-awesome/css/font-awesome.min.css', type='text/css')
+    link(rel='stylesheet', href='css/main.min.css', type='text/css')
     block extra-css
     link(href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css')
     link(href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css')
@@ -36,12 +36,15 @@ html
             li(class='nav-item')
               a(href='#aboutus' class='nav-link') About us
             li(class='nav-item')
-              a(id="loginId" class='nav-link' data-toggle="modal" data-target="#exampleModal") Login
+              #user
+                if !user
+                   a(id="loginId" class='nav-link' data-toggle="modal" data-target="#exampleModal") Login
+                if user
+                  a( class='nav-link' href="customers/logout") Log out
 
     include includes/loginform
     block header
     block main-content
-  
       
     footer(class='text-center')
       div(class='footer-above')
@@ -92,11 +95,10 @@ html
       a(class='btn btn-primary page-scroll' href='#page-top')
         i(class='fa fa-chevron-up')
 
-    script(src='public/vendor/jquery/jquery.min.js')
+    script(src='vendor/jquery/jquery.min.js')
     //script(src='public/dependencies/theme-freelancer/js/tether.js')
-    script(src='public/vendor/bootstrap/js/bootstrap.min.js')
-    script(src='public/vendor/jquery-easing/jquery.easing.js')
-    script(src='public/vendor/theme-freelancer/freelancer.min.js')
-    script(src='public/js/bootstrapModal.js')
-    script(src='public/js/main.js')
+    script(src='vendor/bootstrap/js/bootstrap.min.js')
+    script(src='vendor/jquery-easing/jquery.easing.js')
+    script(src='vendor/theme-freelancer/freelancer.min.js')
+    script(src='js/main.js')
     block extra-js

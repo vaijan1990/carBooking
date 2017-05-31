@@ -1,13 +1,13 @@
 /*** Modules Imports ***/
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const expressValidator = require('express-validator');
-const flash = require('connect-flash');
 const session = require('express-session');
+const flash = require('connect-flash');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const mongodb = require('mongodb');
 const mongoose = require('mongoose');
-const cookieParser = require('cookie-parser');
 const dotEnvConfig = require('dotenv').config();
 const path = require('path');
 const express = require('express');
@@ -15,7 +15,6 @@ const MongoStore = require('connect-mongo')(session);
 
 //Create app
 const app = express();
-// require('./config/passportConfig');
 
 /*** Configuration ***/
 app.set('views', './views');
@@ -32,11 +31,30 @@ var viewRoutes = require('./routes/viewRoute');
 
 
 /*** App "usages" ***/
+
 //Body parser
+app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+
+//Express Session
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: true,
+    saveUninitialized: true,
+
+    //don't erase this line yet :P
+    // store: new MongoStore({
+    //     mongooseConnection: mongoose.connection
+    // })
+}));
+
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 //Express-validator
 // In this example, the formParam value is going to get morphed into form body format useful for printing.
 app.use(expressValidator({
@@ -56,45 +74,28 @@ app.use(expressValidator({
     }
 }));
 
+//Connect-flash
+app.use(flash());
+
+//"Global" variabels.
+app.use(function(request, response, next) {
+    response.locals.success_msg =request.flash('success_msg');
+    response.locals.error_msg = request.flash('error_msg');
+    response.locals.error = request.flash('error');
+    response.locals.user = request.user || null;
+    next();
+});
+
+
 //Set base url for the different routes
 app.use(viewRoutes);
 app.use('/cars', carRoutes);
 app.use('/customers', customerRoutes);
 
-app.use(cookieParser());
-
 // Static file paths
 app.use(express.static(path.join(__dirname + '/public')));
 app.use('/customers', express.static(path.join(__dirname + '/public')));
 app.use('/cars', express.static(path.join(__dirname + '/public')));
-
-//Express Session
-app.use(session({
-    secret: process.env.SESSION_SECRET,
-    resave: true,
-    saveUninitialized: true,
-    // store: new MongoStore({
-    //     mongooseConnection: mongoose.connection
-    // })
-}));
-
-app.use(passport.initialize());
-app.use(passport.session());
-
-//Connect-flash
-app.use(flash());
-
-//Global variabels
-app.use(function(request, response, next) {
-    response.locals.success_msg =request.flash('success_msg');
-    response.locals.error_msg = request.flash('error_msg');
-    response.locals.error = request.flash('error');
-});
-
-// app.use(bodyParser.urlencoded({
-//     extended: true
-// }));
-
 
 /*** Miscellaneous ***/
 const url = process.env.DB_HOST;
@@ -115,7 +116,6 @@ mongoose.Promise = global.Promise;
 
 app.listen(port, function () {
     console.log('Example app listening on port 3000!');
-
 });
 
 // this exports the routes to the endpointTest.js file
