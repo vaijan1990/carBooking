@@ -8,15 +8,6 @@ $(function () {
 
 
   //listeners
-  $('#datepicker-from').on('input', function() {
-    console.log()
-  });
-
-  $('#datepicker-to').on('input', function() {
-    $(this).val() // get the current value of the input field.
-  });
-
-
   $("#checkAvailibilty").submit(function(e) {
     $("#datepicker-from-hidden").val($("#datepicker-from").data('datepicker').getFormattedDate('yyyy-mm-dd'));
     $("#datepicker-to-hidden").val($("#datepicker-to").data('datepicker').getFormattedDate('yyyy-mm-dd'));
