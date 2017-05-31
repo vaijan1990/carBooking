@@ -13,11 +13,15 @@ router.use(function (req, res, next) {
 
 // Find all the cars in the collection. this route will be localhost:3000/cars
 router.get('/', (request, response) => {
-    response.render('index', {title: 'car rental service', message: 'message'})
+    response.render('index', {title: 'Welcome'})
 });
 
 router.get('/loggedin', (request, response) => {
-    response.render('index', {title: 'Hey'})
+    response.render('index', {title: 'Welcome'})
+});
+
+router.get('/ourcars', (request, response) => {
+    response.render('ourcars', {title: 'Our Vehicles'})
 });
 
 // test post data

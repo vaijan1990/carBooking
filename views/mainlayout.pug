@@ -1,3 +1,6 @@
+if bodytag === undefined
+  - bodytag = 'defaultbody'
+
 html
   head
     
@@ -14,14 +17,14 @@ html
         i(class='fa fa-bars')
         
       div(class='container')
-        a(class='navbar-brand' href='#page-top') Car Rental
+        a(class='navbar-brand' href='/') Car Rental
           |
           |
           em Supreme
         div(class='collapse navbar-collapse' id='main-navbar-collapse')
           ul(class='navbar-nav ml-auto')
             li(class='nav-item')
-              a(href='#ourcars' class='nav-link') Our cars
+              a(href='/ourcars' class='nav-link') Our cars
             li(class='nav-item')
               a(href='#aboutus' class='nav-link') About us
             li(class='nav-item')
