@@ -33,7 +33,7 @@ var viewRoutes = require('./routes/viewRoute');
 /*** App "usages" ***/
 
 //Body parser
-app.use(cookieParser('secret'));
+app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
