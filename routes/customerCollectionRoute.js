@@ -44,7 +44,7 @@ module.exports = (customerDetail) => {
 
     //when click on register link
     router.get('/register', (request, response) => {
-        response.render('registerForm');
+        response.render('registerForm', {title: 'Register', bodytag: 'registerBody'});
     });
 
     //check login
