@@ -25,13 +25,15 @@ block main-content
           button(class='filtercars' id='seats7') 7 seats
           
         div(class='container cars-list')
-          table(id='car-table')
-            tr
-              th(scope='col') Brand
-              th(scope='col') Seats
-              th(scope='col') Automatic
-              th(scope='col') Towbar
-              th(scope='col') Price/day
+          table
+            thead
+              tr
+                th(scope='col') Brand
+                th(scope='col') Seats
+                th(scope='col') Automatic
+                th(scope='col') Towbar
+                th(scope='col') Price/day
+            tbody(id='car-table')
               
         
               
