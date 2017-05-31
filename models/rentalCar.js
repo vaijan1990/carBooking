@@ -6,7 +6,16 @@ var rentalCarSchema = new mongoose.Schema({
     priceperday: Number,
     seats: Number,
     towbar: Boolean,
-    booked: Boolean
+    booked: Boolean,
+    startdate: {
+      type: Date,
+      required: true
+    },
+    enddate: {
+      type: Date,
+      required: true
+    }
+
 });
 
 var rentalCar = mongoose.model('rentalCar', rentalCarSchema);

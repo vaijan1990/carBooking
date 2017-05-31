@@ -25,15 +25,37 @@ module.exports = (rentalCar) => {
         })
     });
 
-    // Find every car in the collection that is not booked at the moment. This route will be localhost:3000/cars/available
-    router.get('/available', (request, response) => {
+    // Find every car in the coll ection that is not booked at the moment. This route will be localhost:3000/cars/available
+    router.post('/available', (request, response, next) => {
+      if(request.body.startdate && request.body.enddate){
+          if(request.body.startdate <= request.body.enddate)
+          {
+            console.log(request.body.startdate);
+            console.log(request.body.enddate)
+            rentalCar.find({startdate: {'$ne': request.body.startdate}},(err, cars) => {
+                if(err)
+                    console.log(err);
+                response.send(cars);
+            });
+          }
+          else{
+            var err = new Error('Start date can not be greater that end date');
+            err.status = 400;
+            return next(err);
+          }
 
-        rentalCar.find({booked:false}, (err, cars) => {
-            if(err)
-                throw err
+      }else{
+        var err = new Error('All fields required');
+        err.status = 400;
+        return next(err);
+      }
 
-            response.json(cars);
-        })
+        // rentalCar.find({booked:false}, (err, cars) => {
+        //     if(err)
+        //         throw err
+        //
+        //     response.json(cars);
+        // })
     });
 
     //Find every car in the collection with the specified number of seats.

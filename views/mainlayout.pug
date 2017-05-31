@@ -3,19 +3,19 @@ if bodytag === undefined
 
 html
   head
-    
+
     include includes/headertags.pug
-    
+
     include includes/stylesheets.pug
-    
+
     block extra-css
-    
+
   body(id='page-top' class='index ' + bodytag)
-    
+
     nav(id='mainNav' class='navbar fixed-top navbar-toggleable-md navbar-light')
       button(type='button' class='navbar-toggler navbar-toggler-right' data-toggle='collapse' data-target='#main-navbar-collapse' aria-controls='navbarExample' aria-expanded='false' aria-label='Toggle navigation') Menu
         i(class='fa fa-bars')
-        
+
       div(class='container')
         a(class='navbar-brand' href='/') Car Rental
           |
@@ -26,7 +26,7 @@ html
             li(class='nav-item')
               a(href='/ourcars' class='nav-link') Our cars
             li(class='nav-item')
-              a(href='#aboutus' class='nav-link') About us
+              a(href='/aboutus' class='nav-link') About us
             li(class='nav-item')
               #user
                 if !user
@@ -37,7 +37,7 @@ html
     include includes/loginform
     block header
     block main-content
-      
+
     footer(class='text-center')
       div(class='footer-above')
         div(class='container')
@@ -69,11 +69,8 @@ html
                     i(class='fa fa-fw fa-dribbble')
 
             div(class='footer-col col-md-4')
-              h3 About Freelancer
-              p Freelance is a free to use, open source Bootstrap theme created by 
-                a(href='http://startbootstrap.com')
-                .
-                  Start Bootstrap
+              h3 Contact
+              p Email: carrentalsupreme@gmail.com
 
       div(class='footer-below')
         div(class='container')
@@ -81,11 +78,11 @@ html
                 div(class='col-lg-12')
                     Copyright &copy; Your Website 2017
 
-    
+
     //Scroll to Top Button (Only visible on small and extra-small screen sizes)
     div(class='scroll-top hidden-lg-up')
       a(class='btn btn-primary page-scroll' href='#page-top')
         i(class='fa fa-chevron-up')
-    
+
     include includes/scripts.pug
     block extra-js

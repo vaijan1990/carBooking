@@ -24,6 +24,10 @@ router.get('/ourcars', (request, response) => {
     response.render('ourcars', {title: 'Our Vehicles'})
 });
 
+router.get('/aboutus', (request, response) => {
+    response.render('aboutus', {title: 'About Us'})
+});
+
 // test post data
 router.post('/test', (request, response) => {
   console.log(request.body.date.from);
