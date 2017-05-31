@@ -1,38 +1,36 @@
 extends mainlayout.pug
 
 block extra-css
-  link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker3.css', type='text/css')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker3.css', type='text/css')
 block extra-js
-  script(src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js')
-  script(src='public/js/datepicker.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js')
+    script(src='js/datepicker.js')
 
 block header
-  header(class='masthead')
-    
+    header(class='masthead')
+        div(class='container')
+          include includes/datepicker
+
 block main-content
-  section(class='success' id='ourcars')
-    div(class='container')
-      include includes/datepicker
-      h2(class='text-center') Our cars
-      hr(class='star-light')
-      div(class='row')
-        div(class='col-lg-4 offset-lg-2')
-          p djfjfjjf
-        div(class='col-lg-4')
-          p kdkfkkfkf
-        div(class='col-lg-8 offset-lg-2 text-center')
-          a(href='#' class='btn btn-lg btn-outline')
-            i(class='fa fa-download') Download Theme
+    section(class='success' id='ourcars')
+        div(class='container')
+            h2(class='text-center') Our cars
+            hr(class='star-light')
 
 
-    section(class='success' id='aboutus')
-      div(class='container')
-        h2(class='text-center') About
-        hr(class='star-light')
-        div(class='row')
-          div(class='col-lg-4 offset-lg-2')
-            p Rent a car at the lowest price!We always have a good deal on weekly rates on all categories
-          div(class='col-lg-4')
-            p The most felxible rental solution. We are flexible - give us a challenge!
-          div(class='col-lg-8 offset-lg-2 text-center')
-            i(class='') Car rental at discounted price
+
+        section(class='success' id='aboutus')
+            div(class='container')
+                h2(class='text-center') About
+                hr(class='star-light')
+                div(class='row')
+                    div(class='col-lg-4 offset-lg-2')
+                        p Rent a car at the lowest price!We always have a good deal on weekly rates on all categories
+                    div(class='col-lg-4')
+                        p The most flexible rental solution. We are flexible - give us a challenge!
+
+        //Scroll to Top Button (Only visible on small and extra-small screen sizes)
+        div(class='scroll-top hidden-lg-up')
+            a(class='btn btn-primary page-scroll' href='#page-top')
+                i(class='fa fa-chevron-up')
+                i(class='') Car rental at discounted price

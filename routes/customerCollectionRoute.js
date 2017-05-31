@@ -68,7 +68,7 @@ module.exports = (customerDetail) => {
 
         if (errors) {
             console.log(errors);
-            response.render('registerForm', {errors: errors});
+            response.render('registerForm', {errors: errors, bodytag: 'registerBodyFaulty'});
         }
 
         else {
