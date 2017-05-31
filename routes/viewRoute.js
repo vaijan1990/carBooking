@@ -1,6 +1,5 @@
 const router = require('express').Router();
 
-
 /*** Routes exports ***/
 
 /*This is the root middle layer which will be executed before any other routes.
@@ -17,25 +16,14 @@ router.get('/', (request, response) => {
     response.render('index', {title: 'car rental service', message: 'message'})
 });
 
-// the login form request is sent to this route
-router.get('/login', (request, response) => {
-    // check if the customer is in the database and the render appropriate view depending on the result.
-    // render the index view again, but with the login button changed to logged in. or smth else..
-    response.render('index')
+router.get('/loggedin', (request, response) => {
+    response.render('index', {title: 'Hey'})
 });
-
-// when a customer wants to become a member they're sent here
-router.get('/register', (request, response) => {
-    // render the register form to the client here
-    response.send("render a register form here")
-});
-
 
 // test post data
 router.post('/test', (request, response) => {
   console.log(request.body.date.from);
   console.log(request.body.date.to);
 });
-
 
 module.exports = router;

@@ -30,9 +30,9 @@ module.exports = (rentalCar) => {
 
         rentalCar.find({booked:false}, (err, cars) => {
             if(err)
-                console.log(err);
+                throw err
 
-            response.send(cars );
+            response.json(cars);
         })
     });
 
@@ -53,6 +53,7 @@ module.exports = (rentalCar) => {
     router.patch('/cancel/:id', (request, response) => {
 
         var id = request.params.id;
+
         // Find the car by id and set it's booked value to false;
         rentalCar.findByIdAndUpdate(id, {booked: false},{new: true}, (err, cars) => {
             if(err)
