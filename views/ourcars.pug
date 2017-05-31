@@ -17,23 +17,22 @@ block main-content
     div(class='container')
       h2(class='text-center') Our cars
           
-        div(class='container') FILTER FLEXBOX
+        div(class='d-flex flex-raw justify-content-center align-items-stretch')
           button(class='filtercars' id='automatic') Automatic
           button(class='filtercars' id='towbar') Towbar
           button(class='filtercars' id='seats2') 2 seats
           button(class='filtercars' id='seats5') 5 seats
           button(class='filtercars' id='seats7') 7 seats
-          
-        div(class='container cars-list')
-          table
-            thead
-              tr
-                th(scope='col') Brand
-                th(scope='col') Seats
-                th(scope='col') Automatic
-                th(scope='col') Towbar
-                th(scope='col') Price/day
-            tbody(id='car-table')
+        
+        table(class='table table-hover mx-auto car-table-container')
+          thead(class='thead-inverse')
+            tr
+              th(scope='col') Brand
+              th(scope='col') Seats
+              th(scope='col') Automatic
+              th(scope='col') Towbar
+              th(scope='col') Price/day
+          tbody(id='car-table')
               
         
               

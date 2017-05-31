@@ -1,6 +1,5 @@
 body {
   overflow: auto;
-  position: relative;
 }
 
 .modal-dialog {
@@ -29,4 +28,12 @@ body {
 .registrationbox {
   margin-top: 11vh;
   margin-bottom: 7vh;
+}
+
+@media (max-width: 768px){
+  .car-table-container {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+  }
 }
