@@ -13,42 +13,14 @@ block header
           include includes/datepicker
 
 block main-content
-  section(class='success' id='ourcars')
-    div(class='container')
-      h2(class='text-center') Our cars
-
-        div(class='d-flex flex-raw justify-content-center align-items-stretch')
-          button(class='filtercars' id='automatic') Automatic
-          button(class='filtercars' id='towbar') Towbar
-          button(class='filtercars' id='seats2') 2 seats
-          button(class='filtercars' id='seats5') 5 seats
-          button(class='filtercars' id='seats7') 7 seats
-
-        table(class='table table-hover mx-auto car-table-container')
-          thead(class='thead-inverse')
-            tr
-              th(scope='col') Brand
-              th(scope='col') Seats
-              th(scope='col') Automatic
-              th(scope='col') Towbar
-              th(scope='col') Price/day
-          tbody(id='car-table')
-
-
-      //Scroll to Top Button (Only visible on small and extra-small screen sizes)
-      div(class='scroll-top hidden-lg-up')
-          a(class='btn btn-primary page-scroll' href='#page-top')
-              i(class='fa fa-chevron-up')
-              i(class='') Car rental at discounted price
-
   section(class='success' id='aboutus')
-  div(class='container')
-    h2(class='text-center') About Us
+    div(class='container')
+      h2(class='text-center') About Us
       hr(class='star-light')
-    div(class='row')
-      div(class='col-lg-4 offset-lg-2')
-        p Rent a car at the lowest price!We always have a good deal on weekly rates on all categories
-      div(class='col-lg-4')
-        p The most felxible rental solution. We are flexible - give us a challenge!
-      div(class='col-lg-8 offset-lg-2 text-center')
-        i(class='') Car rental at discounted price
+      div(class='row')
+        div(class='col-lg-4 offset-lg-2')
+          p Rent a car at the lowest price!We always have a good deal on weekly rates on all categories
+        div(class='col-lg-4')
+          p The most felxible rental solution. We are flexible - give us a challenge!
+        div(class='col-lg-8 offset-lg-2 text-center')
+          i(class='') Car rental at discounted price
