@@ -1,11 +1,11 @@
 $(function () {
 
   var myFilters = {
-    auto: true,
+    auto: false,
     towbar: true,
     seats2: false,
-    seats5: false,
-    seats7: false
+    seats5: true,
+    seats7: true
   };
   $.getJSON("/cars", function(result){
 
@@ -13,36 +13,26 @@ $(function () {
   })
   .done(function(result) {
     //checks if any filter is set
-    var filterSet = false;
-    $.each(myFilters, function(key, value) {
-      if (value)
-        filterSet = true;
-    })
-    if (!filterSet) {
-      result.forEach(function(car) {
-        $( "#car-table" ).append( "<tr><td>" + car.brand + "</td><td>"  + car.seats + "</td><td>" + car.auto + "</td><td>" + car.towbar + "</td><td>" + car.priceperday + "</td></tr>");
-      })
-    } else {
       $.each(myFilters, function(key, value) {
-        console.log(key);
-        console.log(value);
-
-      if (value) {
+      if (value && (key == "auto" || key == "towbar")) {
         result = result.filter(function(attr) {
-          console.log("MAP start: ");
-          console.log(attr[key]);
             if (attr[key] == true) {
-              console.log("RETURN");
               return attr;
             }
           })
-        }
+      } else if (value) {
+        result = result.filter(function(attr) {
+            if ((myFilters.seats2 == true && attr.seats == 2) || (myFilters.seats5 == true && attr.seats == 5) || (myFilters.seats7 == true && attr.seats == 7)) {
+              return attr;
+            }
+        })
+      }
       })
       console.log(result);
       result.forEach(function(car) {
         $( "#car-table" ).append( "<tr><td>" + car.brand + "</td><td>"  + car.seats + "</td><td>" + car.auto + "</td><td>" + car.towbar + "</td><td>" + car.priceperday + "</td></tr>");
       })
-    }
+
 
   })
   .fail(function(result) {
