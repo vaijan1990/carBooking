@@ -4,11 +4,11 @@ div(class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labell
             div(class="modal-header")
                 label(class="modal-title" id="exampleModalLabel") Login to your account
                 span(id="register-link") don't have an account ? register
-                    a(href="customers/register")|  here
+                    a(href="../customers/register")|  here
                 button(type="button" class="close" data-dismiss="modal" aria-label="close modal")
                     span(aria-hidden="true") &times;
         div(class="modal-body")
-            form( id="login-form" action="customers/login" method="post")
+            form( id="login-form" action="../customers/login" method="post")
                 div(class="form-group")
                     label(for="recipient-name" class="form-control-label")
                     input(type="text" class="form-control" id="recipient-name" placeholder="Username" name="username")
