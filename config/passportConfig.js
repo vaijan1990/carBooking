@@ -8,7 +8,7 @@ passport.use(new LocalStrategy((username, password, done) => {
         if (err)
             throw err;
         if (!user)
-            return done(null, false, {message: 'Unknown user'});
+            return done(null, false);
 
         customerDetail.comparePassword(password, user.password, (err, isMatch) => {
             if (err) {
@@ -18,7 +18,7 @@ passport.use(new LocalStrategy((username, password, done) => {
                 return done(null, user)
             }
             else {
-                done(null, false, {message: 'Invalid password'})
+                done(null, false)
             }
         })
     })
