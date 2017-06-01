@@ -30,7 +30,8 @@ module.exports = (customerDetail) => {
     });
 
     router.get('/loginfail', (request, response) => {
-        response.render("index");
+        // send a flash error message that's in the request object from here
+        response.render('index');
     });
 
     router.get('/loggedout', (request, response) => {
@@ -85,23 +86,17 @@ module.exports = (customerDetail) => {
                 console.log(user);
             });
 
-            request.flash('success_msg', 'you registered successfully and can now log in ');
             response.redirect('registered');
         }
     });
 
     // login
     router.post('/login',
-        passport.authenticate('local', {successRedirect: '/', failureRedirect: '/', failureFlash: true}),
-
-        (request, response) => {
-            response.redirect('/');
-        }
+        passport.authenticate('local', {successRedirect: '/', failureRedirect: 'loginfail'})
     );
 
     router.get('/logout', (request, response) => {
         request.logout();
-        request.flash('success_msg', 'you are logged out');
         response.redirect('/')
     });
 

@@ -6,7 +6,7 @@ footer .footer-above {
   padding-top: 5px
 }
 
-footer .footer-col{
+footer .footer-col {
   margin-bottom: 2%;
 }
 
@@ -61,3 +61,12 @@ footer .footer-below {
 #errors {
   margin-top: 10%;
 }
+
+#nameInput:invalid {
+  background-color: #e6f09e;
+}
+
+#passwordInput:invalid {
+  background-color: #e6f09e;
+}
+
