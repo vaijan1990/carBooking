@@ -15,7 +15,28 @@ block header
 block main-content
   section(class='success' id='ourcars')
     div(class='container')
-      p #{carData}
+      if carData
+        h4  Available cars on #{startdate}
+        table(class='table table-hover mx-auto car-table-container')
+          thead(class='thead-inverse')
+            tr
+              th(scope='col') brand
+              th(scope='col') Seats
+              th(scope='col') Towbar
+              th(scope='col') Price/Day
+          tbody
+            - for (var x = 0; x < carData.length; x++)
+              tr
+                td
+                  .div= carData[x].brand
+                td
+                  .div= carData[x].seats
+                td
+                  .div= carData[x].towbar
+                td
+                  .div= carData[x].priceperday
+
+
       h2(class='text-center') Our cars
         div(class='d-flex flex-row justify-content-center align-items-stretch')
           button(class='filtercars' id='automatic') Automatic

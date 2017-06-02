@@ -40,11 +40,11 @@ module.exports = (rentalCar) => {
                     var carBookedDate = new Date(cars[i].startdate);
                   if(carBookedDate != from) {
                       cars.splice(i,1);
-                      console.log(cars);
+                      console.log(cars.brand);
                   }
                 }
 
-                  response.render('ourcars', {carData: cars, availableTitle: 'available'});
+                  response.render('ourcars', {carData: cars, startdate: from});
             });
 
       }else{
