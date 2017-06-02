@@ -28,21 +28,24 @@ module.exports = (rentalCar) => {
     // Find every car in the coll ection that is not booked at the moment. This route will be localhost:3000/cars/available
     router.post('/available', (request, response, next) => {
       if(request.body.startdate && request.body.enddate){
-          if(request.body.startdate <= request.body.enddate)
-          {
-            console.log(request.body.startdate);
-            console.log(request.body.enddate)
-            rentalCar.find({startdate: {'$ne': request.body.startdate}},(err, cars) => {
+        const from = new Date(request.body.date['from']);
+        const to  = new Date(request.body.date['to']);
+            console.log(from.getDate());
+            console.log(to)
+            rentalCar.find({},(err, cars) => {
                 if(err)
                     console.log(err);
-                response.send(cars);
+                var responseData;
+                for (var i=0; i<= (cars.length-1); i++){
+                    var carBookedDate = new Date(cars[i].startdate);
+                  if(carBookedDate != from) {
+                      cars.splice(i,1);
+                      console.log(cars);
+                  }
+                }
+
+                  response.render('ourcars', {carData: cars, availableTitle: 'available'});
             });
-          }
-          else{
-            var err = new Error('Start date can not be greater that end date');
-            err.status = 400;
-            return next(err);
-          }
 
       }else{
         var err = new Error('All fields required');
