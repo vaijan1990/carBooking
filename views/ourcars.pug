@@ -16,12 +16,12 @@ block header
 block main-content
   section(class='success' id='ourcars')
    if carData
-     form(action="/carbooking/save" method="POST" name="saveCarBooking" id="saveCarBooking")
+     form(action="/cars/carbooking" method="POST" name="saveCarBooking" id="saveCarBooking")
        h4  Available cars :
        div(class='input-group input-daterange justify-content-center')
-         input(name="startdate" id='datepicker-from' placeholder=bookingstartdate readonly)
+         input(name="startdate" id='datepicker-from' placeholder=fromDate value=fromDate readonly)
          div(class='input-group-addon') &nbsp;to&nbsp;
-         input(name="enddate" id='datepicker-to' placeholder=bookingenddate readonly)
+         input(name="enddate" id='datepicker-to' placeholder=toDate value=toDate areadonly)
        div(class='container')
           table(class='table table-hover mx-auto car-table-container')
             thead(class='thead-inverse')
@@ -35,7 +35,7 @@ block main-content
               - for (var x = 0; x < carData.length; x++)
                 tr
                   td
-                    input(type='checkbox')
+                    input(type='checkbox' id=carData[x]._id name='bookingcarId' value=carData[x]._id)
                   td
                     .div= carData[x].brand
                   td

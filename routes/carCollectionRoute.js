@@ -48,7 +48,7 @@ module.exports = (rentalCar) => {
                 }
                 console.log(fromDate);
                 console.log(toDate);
-                  response.render('ourcars', {carData: cars, bookingstartdate: fromDate, bookingenddate: toDate});
+                  response.render('ourcars', {carData: cars, fromDate: fromDate, toDate: toDate});
             });
 
       }else{
@@ -70,6 +70,23 @@ module.exports = (rentalCar) => {
         return dd+'/'+mm+'/' + date.getFullYear();
 
     }
+
+    // Router for carbooking save:
+    router.post('/carbooking', (request, response) => {
+      var bookingstartdate= new Date(request.body.startdate);
+      var bookingsenddate= new Date(request.body.enddate);
+      var customerid ;
+      
+      // var bookedCarid = request.body.bookedCarid;
+      console.log(bookingstartdate, bookingsenddate, customerid);
+
+        rentalCar.find({},(err, cars) => {
+            if(err)
+                console.log(err);
+            response.send(cars);
+        })
+    });
+
     //Find every car in the collection with the specified number of seats.
     // This route will be localhost:3000/cars/seats/enternumberofseats
     router.get('/seats/:seats', (request, response) => {
