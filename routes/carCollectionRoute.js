@@ -29,7 +29,8 @@ module.exports = (rentalCar) => {
     router.post('/available', (request, response, next) => {
       const from = new Date(request.body.date['from']);
       const to  = new Date(request.body.date['to']);
-      const fromDate = getFormatedDate(from);
+      var fromDate = getFormatedDate(from);
+      var toDate = getFormatedDate(to);
       if(from && to){
             rentalCar.find({},(err, cars) => {
                 if(err)
@@ -46,7 +47,8 @@ module.exports = (rentalCar) => {
                   }
                 }
                 console.log(fromDate);
-                  response.render('ourcars', {carData: cars, startdate: fromDate});
+                console.log(toDate);
+                  response.render('ourcars', {carData: cars, bookingstartdate: fromDate, bookingenddate: toDate});
             });
 
       }else{
@@ -55,16 +57,10 @@ module.exports = (rentalCar) => {
         return next(err);
       }
 
-        // rentalCar.find({booked:false}, (err, cars) => {
-        //     if(err)
-        //         throw err
-        //
-        //     response.json(cars);
-        // })
     });
     function getFormatedDate(date) {
 
-        var date = new Date();
+        var date = new Date(date);
         var dd = date.getDate();
         var mm = date.getMonth() + 1;
 

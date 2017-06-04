@@ -8,35 +8,45 @@ block extra-js
     script(src='js/carbrowser.js')
 
 block header
-    header(class='masthead')
-        div(class='container')
-          include includes/datepicker
+    if !carData
+      header(class='masthead')
+          div(class='container')
+              include includes/datepicker
 
 block main-content
   section(class='success' id='ourcars')
-    div(class='container')
-      if carData
-        h4  Available cars on #{startdate}
-        table(class='table table-hover mx-auto car-table-container')
-          thead(class='thead-inverse')
-            tr
-              th(scope='col') brand
-              th(scope='col') Seats
-              th(scope='col') Towbar
-              th(scope='col') Price/Day
-          tbody
-            - for (var x = 0; x < carData.length; x++)
+   if carData
+     form(action="/carbooking/save" method="POST" name="saveCarBooking" id="saveCarBooking")
+       h4  Available cars :
+       div(class='input-group input-daterange justify-content-center')
+         input(name="startdate" id='datepicker-from' placeholder=bookingstartdate readonly)
+         div(class='input-group-addon') &nbsp;to&nbsp;
+         input(name="enddate" id='datepicker-to' placeholder=bookingenddate readonly)
+       div(class='container')
+          table(class='table table-hover mx-auto car-table-container')
+            thead(class='thead-inverse')
               tr
-                td
-                  .div= carData[x].brand
-                td
-                  .div= carData[x].seats
-                td
-                  .div= carData[x].towbar
-                td
-                  .div= carData[x].priceperday
-                
-    if !carData
+                th(scope='col')
+                th(scope='col') brand
+                th(scope='col') Seats
+                th(scope='col') Towbar
+                th(scope='col') Price/Day
+            tbody
+              - for (var x = 0; x < carData.length; x++)
+                tr
+                  td
+                    input(type='checkbox')
+                  td
+                    .div= carData[x].brand
+                  td
+                    .div= carData[x].seats
+                  td
+                    .div= carData[x].towbar
+                  td
+                    .div= carData[x].priceperday
+       button(type='submit' class="btn btn-primary btn-lg") Book
+
+   else
       h2(class='text-center') Our cars
         div(class='d-flex flex-row justify-content-center align-items-stretch')
           button(class='filtercars' id='automatic') Automatic
