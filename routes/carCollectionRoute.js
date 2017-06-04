@@ -27,24 +27,26 @@ module.exports = (rentalCar) => {
 
     // Find every car in the coll ection that is not booked at the moment. This route will be localhost:3000/cars/available
     router.post('/available', (request, response, next) => {
-      if(request.body.startdate && request.body.enddate){
-        const from = new Date(request.body.date['from']);
-        const to  = new Date(request.body.date['to']);
-            console.log(from.getDate());
-            console.log(to)
+      const from = new Date(request.body.date['from']);
+      const to  = new Date(request.body.date['to']);
+      const fromDate = getFormatedDate(from);
+      if(from && to){
             rentalCar.find({},(err, cars) => {
                 if(err)
                     console.log(err);
-                var responseData;
+                const carBookedDate;
                 for (var i=0; i<= (cars.length-1); i++){
-                    var carBookedDate = new Date(cars[i].startdate);
-                  if(carBookedDate != from) {
+                    carBookedDate = new Date(cars[i].startdate);
+
+                  if(getFormatedDate(carBookedDate) == fromDate) {
+                    console.log('inside loop');
+                    console.log(i);
                       cars.splice(i,1);
-                      console.log(cars.brand);
+
                   }
                 }
-
-                  response.render('ourcars', {carData: cars, startdate: from});
+                console.log(fromDate);
+                  response.render('ourcars', {carData: cars, startdate: fromDate});
             });
 
       }else{
@@ -60,7 +62,18 @@ module.exports = (rentalCar) => {
         //     response.json(cars);
         // })
     });
+    function getFormatedDate(date) {
 
+        var date = new Date();
+        var dd = date.getDate();
+        var mm = date.getMonth() + 1;
+
+        if(dd < 10) { dd = '0' + dd; }
+        if(mm < 10) { mm = '0' + mm; }
+
+        return dd+'/'+mm+'/' + date.getFullYear();
+
+    }
     //Find every car in the collection with the specified number of seats.
     // This route will be localhost:3000/cars/seats/enternumberofseats
     router.get('/seats/:seats', (request, response) => {
