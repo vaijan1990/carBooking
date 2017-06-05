@@ -95,7 +95,6 @@ module.exports = (rentalCar) => {
                             }
 
                             if (datesRange[i].toDateString() === carBookedStartDate && datesRange[i].toDateString() !== carBookedEndDate) {
-                                console.log("this car has the same startdate as in the date range and has a booking that does not end within the range")
                                 continue;
                             }
                         }
@@ -115,6 +114,9 @@ module.exports = (rentalCar) => {
                     withinRange: endDateWithinRange
                 });
             });
+        }
+        else{
+            response.render('ourcars', {wrongDate: "you have to pick two dates"});
         }
     });
 
