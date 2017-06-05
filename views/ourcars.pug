@@ -1,5 +1,4 @@
 extends mainlayout.pug
-
 block extra-css
     link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker3.css', type='text/css')
 block extra-js
@@ -16,14 +15,16 @@ block main-content
   section(class='success' id='ourcars')
     div(class='container')
       if carData
-        h4  Available cars on #{startdate}
-        table(class='table table-hover mx-auto car-table-container')
+        h4(id="cars-available-header")  Available cars between #{startdate} and #{enddate}
+        table(class='table table-hover mx-auto table-bordered car-table-container')
           thead(class='thead-inverse')
             tr
-              th(scope='col') brand
-              th(scope='col') Seats
-              th(scope='col') Towbar
-              th(scope='col') Price/Day
+              th(scope='row') Brand
+              th(scope='row') Seats
+              th(scope='row') Towbar
+              th(scope='row') Price/Day
+              if withinRange
+                  th(scope='col') Bookable again
           tbody
             - for (var x = 0; x < carData.length; x++)
               tr
@@ -35,8 +36,11 @@ block main-content
                   .div= carData[x].towbar
                 td
                   .div= carData[x].priceperday
+                if carData[x].enddate
+                    td
+                      .div= moment(carData[x].enddate).format('YYYY.MM.DD')
 
-    if !carData            
+    if !carData
       h2(class='text-center') Our cars
         div(class='d-flex flex-row justify-content-center align-items-stretch')
           button(class='filtercars' id='automatic') Automatic

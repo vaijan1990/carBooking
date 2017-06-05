@@ -7,29 +7,28 @@ block extra-js
     script(src='js/datepicker.js')
 
 block header
-  header(class='masthead')
-
-block main-content
-  section(class='success' id='ourcars')
-    div(class='container')
-      include includes/datepicker
-      h2(class='text-center') Our cars
-      hr(class='star-light')
-      div(class='row')
-
     header(class='masthead')
-        div(class='container')
-
 
 block main-content
     section(class='success' id='ourcars')
+        div(class='container')
+        include includes/datepicker
+        h2(class='text-center') Our cars
+        hr(class='star-light')
+        div(class='row')
+
+        header(class='masthead')
+            div(class='container')
+
+
+block main-content
+    section(class='success')
         div(class='container')
             include includes/datepicker
 
 
         section(class='success' id='aboutus')
             div(class='container')
-
                 div(class='row')
                     div(class='col-lg-4 offset-lg-2')
                         h3  Discount 20% on midsommar!

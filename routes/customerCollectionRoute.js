@@ -40,7 +40,7 @@ module.exports = (customerDetail) => {
 
     //customer gets sent here when the registration is done
     router.get('/registered', (request, response) => {
-        response.render('registrationdone');
+        response.render('index');
     });
 
     //when click on register link
@@ -50,6 +50,7 @@ module.exports = (customerDetail) => {
 
     //check login
     router.post('/registeruser', (request, response) => {
+
         var name = request.body.name;
         var email = request.body.email;
         var username = request.body.username;
