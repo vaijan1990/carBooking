@@ -7,9 +7,10 @@ block extra-js
     script(src='js/carbrowser.js')
 
 block header
-    header(class='masthead')
-        div(class='container')
-          include includes/datepicker
+    if !carData
+      header(class='masthead')
+          div(class='container')
+              include includes/datepicker
 
 block main-content
   section(class='success' id='ourcars')
@@ -41,6 +42,7 @@ block main-content
                       .div= moment(carData[x].enddate).format('YYYY.MM.DD')
 
     if !carData
+
       h2(class='text-center') Our cars
         div(class='d-flex flex-row justify-content-center align-items-stretch')
           button(class='filtercars' id='automatic') Automatic

@@ -118,6 +118,7 @@ module.exports = (rentalCar) => {
         else{
             response.render('ourcars', {wrongDate: "you have to pick two dates"});
         }
+
     });
 
     //Find every car in the collection with the specified number of seats.
