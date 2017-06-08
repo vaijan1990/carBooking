@@ -31,6 +31,10 @@ footer .footer-below {
   margin-top: 15%;
 }
 
+.form-input{
+  border-radius: 2px;
+}
+
 .registerBody {
   background-color: #18bc9c;
 }
@@ -50,26 +54,41 @@ footer .footer-below {
   margin-bottom: 7vh;
 }
 
-@media (max-width: 768px) {
-  .car-table-container {
-    display: block;
-    width: 100%;
-    overflow-x: auto;
-  }
-}
-
-#errors {
+.datepicker-container{
   margin-top: 10%;
 }
 
-#nameInput:invalid {
-  background-color: #e6f09e;
+#aboutus{
+  margin-top: 10%;
+}
+#check-available{
+  margin-top: 5%;
+  box-shadow: 3px 3px 3px 3px black;
+}
+#check-available:active {
+  transform: translateY(4px);
 }
 
-#passwordInput:invalid {
-  background-color: #e6f09e;
-}
+  @media (max-width: 768px) {
+    .car-table-container {
+      display: inline-block;
+      width: 100%;
+      overflow-x: auto;
+    }
+  }
 
-#ourcars{
-  margin-top: 0px;
-}
+  #errors {
+    margin-top: 10%;
+  }
+
+  #nameInput:invalid {
+    background-color: #e6f09e;
+  }
+
+  #passwordInput:invalid {
+    background-color: #e6f09e;
+  }
+  #cars-available-header{
+    margin-bottom: 3%;
+  }
+

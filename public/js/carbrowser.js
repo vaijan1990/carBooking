@@ -9,7 +9,6 @@ $(function () {
   };
   $.getJSON("/cars", function(result){
 
-
   })
   .done(function(result) {
     //checks if any filter is set

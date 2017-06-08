@@ -17,6 +17,8 @@ const MongoStore = require('connect-mongo')(session);
 const app = express();
 
 /*** Configuration ***/
+// to be able to format dates in the pug template
+app.locals.moment = require('moment');
 app.set('views', './views');
 app.set('view engine', 'pug');
 
