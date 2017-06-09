@@ -7,28 +7,28 @@ block extra-js
     script(src='js/carbrowser.js')
 
 block header
-    if !carData
       header(class='masthead')
           div(class='container')
               include includes/datepicker
+
 
 block main-content
   section(class='success' id='ourcars')
     div(class='container')
       if carData
-        h4(id="cars-available-header")  Available cars between #{startdate} and #{enddate}
-        table(class='table table-hover mx-auto table-bordered car-table-container')
+        h5(id="cars-available-header")  Available cars between #{startdate} and #{enddate}
+        table(class='table mx-auto table-bordered car-table-container')
           thead(class='thead-inverse')
-            tr
+            tr()
               th(scope='row') Brand
               th(scope='row') Seats
               th(scope='row') Towbar
               th(scope='row') Price/Day
               if withinRange
                   th(scope='col') Bookable again
-          tbody
+          tbody(id="car-table-body")
             - for (var x = 0; x < carData.length; x++)
-              tr
+              tr(data-identifier= carData[x].id)
                 td
                   .div= carData[x].brand
                 td
@@ -40,6 +40,7 @@ block main-content
                 if carData[x].enddate
                     td
                       .div= moment(carData[x].enddate).format('YYYY.MM.DD')
+        input(class="btn btn-lg btn-primary" value='Continue to checkout' id="sign-up" type='submit')
 
     if !carData
 

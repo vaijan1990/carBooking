@@ -101,5 +101,16 @@ module.exports = (customerDetail) => {
         response.redirect('/')
     });
 
+    router.post('/checkout', (request, response) => {
+
+        //check if user is logged in or not
+        var user = request.user;
+
+        response.render('checkoutForm',(err, html) => {
+            console.log(html);
+           response.send(html);
+       })
+    });
+
     return router;
 };
