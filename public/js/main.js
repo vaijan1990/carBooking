@@ -38,12 +38,9 @@ $(function () {
 
     });
 
-    $('#sign-up').on('click', (e)=> {
+    $('#sign-up').on('click', ()=> {
 
-        $.post('../customers/checkout', function(data) {
-            console.log(data);
-            // append the returned html to the document
-        });
+        $.redirect('../customers/checkout', {carIds: carsIds})
 
     })
 });

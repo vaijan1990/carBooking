@@ -5,44 +5,48 @@ block extra-js
 block header
 
 block bookingOrderCard
-    div(class="card mx-auto" style="width: 30rem")
-        div(class="card-block")
-            h5(class="card-title") Your booking summary
-        img(class="card-img-top img-fluid" src="../images/audi.png" alt="audi")
-        ul(class="list-group list-group-flush")
-            li(class="list-group-item") car property 1
-            li(class="list-group-item") car property 2
-            li(class="list-group-item") car property 3
-        div(class="card-block")
-            a(href="../ourcars") link back to booking page
+    if user
+      div(class="card mx-auto" style="width: 30rem" id="booking-order-card")
+          div(class="card-block")
+              h5(class="card-title") Your booking summary
+          img(class="card-img-top img-fluid" src="../images/audi.png" alt="audi")
+          if carIds
+            ul(class="list-group list-group-flush")
+              - for (var i = 0; i < carIds.length; i++)
+                li(class="list-group-item")= carIds[i]
+
+            div(class="card-block")
+              a(href="../ourcars") link back to booking page
+          input(class="btn btn-lg btn-danger" value='Book your car' id="sign-up" type='submit')
 
 
 block main-content
-    div(class="container registrationbox")
-        #errors
-            if errors
-                each error in errors
-                    div(class="alert alert-danger")
-                        a(class="close" data-dismiss="alert" href="#") x
-                        p=error.msg
-        div(class="row")
-            div(class="col-sm-6 mx-auto")
-                div(class="card card-block")
-                    h3(class="text-xs-center") Contact information
-                    hr
-                    form(action="registeruser" method="post")
-                        fieldset
-                            div(class="form-group")
-                                input(class="form-control input-lg" id="fullname" placeholder="Full Name" name="name" value="" type="text")
-                            div(class="form-group")
-                                input(class="form-control input-lg" placeholder="E-mail Address" name="email" type="email")
-                            div(class="form-group")
-                                input(class="form-control input-lg" placeholder="Phone" name="phone" type="tel")
-                            div(class="form-group")
-                                input(class="form-control input-lg" placeholder="Username" name="username" value="" type="text")
-                            div(class="form-group")
-                                input(class="form-control input-lg" placeholder="Password" name="password" value="" type="password")
-                            div(class="form-group")
-                                input(class="form-control input-lg" placeholder="Confirm Password" name="password2" value="" type="password")
+    if !user
+      div(class="container registrationbox")
+          #errors
+              if errors
+                  each error in errors
+                      div(class="alert alert-danger")
+                          a(class="close" data-dismiss="alert" href="#") x
+                          p=error.msg
+          div(class="row")
+              div(class="col-sm-6 mx-auto")
+                  div(class="card card-block")
+                      h3(class="text-xs-center") Contact information
+                      hr
+                      form(action="registeruser" method="post")
+                          fieldset
+                              div(class="form-group")
+                                  input(class="form-control input-lg" id="fullname" placeholder="Full Name" name="name" value="" type="text")
+                              div(class="form-group")
+                                  input(class="form-control input-lg" placeholder="E-mail Address" name="email" type="email")
+                              div(class="form-group")
+                                  input(class="form-control input-lg" placeholder="Phone" name="phone" type="tel")
+                              div(class="form-group")
+                                  input(class="form-control input-lg" placeholder="Username" name="username" value="" type="text")
+                              div(class="form-group")
+                                  input(class="form-control input-lg" placeholder="Password" name="password" value="" type="password")
+                              div(class="form-group")
+                                  input(class="form-control input-lg" placeholder="Confirm Password" name="password2" value="" type="password")
 
-                            input(class="btn btn-lg btn-success btn-block" value='Book your car' id="sign-up" type='submit')
+                              input(class="btn btn-lg btn-success btn-block" value='Book your car' id="sign-up" type='submit')

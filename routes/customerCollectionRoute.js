@@ -103,13 +103,10 @@ module.exports = (customerDetail) => {
 
     router.post('/checkout', (request, response) => {
 
-        //check if user is logged in or not
         var user = request.user;
+        console.log("this is the user", user);
 
-        response.render('checkoutForm',(err, html) => {
-            console.log(html);
-           response.send(html);
-       })
+        response.render('checkoutForm', {bodytag: 'registerBody', carIds: request.body.carIds, user: user});
     });
 
     return router;
