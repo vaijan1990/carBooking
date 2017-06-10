@@ -147,6 +147,7 @@ module.exports = (rentalCar) => {
             response.send(cars);
         })
     });
+
     //add a new rental car to the database. This route will be localhost:3000/new
     router.post('/new', (request, response) => {
 

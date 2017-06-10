@@ -5,7 +5,7 @@ const passport = require('../config/passportConfig');
 // const LocalStrategy = require('passport-local').Strategy;
 
 
-module.exports = (customerDetail) => {
+module.exports = (customerDetail,rentalCar) => {
 
     //DON'T erase the below code yet !
     //middleware function. checks if a user is logged in
@@ -104,9 +104,19 @@ module.exports = (customerDetail) => {
     router.post('/checkout', (request, response) => {
 
         var user = request.user;
-        console.log("this is the user", user);
+        var carIds = request.body.carIds;
+        var cars = [];
 
-        response.render('checkoutForm', {bodytag: 'registerBody', carIds: request.body.carIds, user: user});
+        console.log("this is the user", user);
+        rentalCar.find({
+            '_id': {$in: carIds}
+        },
+            (err, cars)=> {
+             cars.push(cars);
+             console.log(cars);
+                 response.render('checkoutForm', {bodytag: 'registerBody', cars: cars, user: user});
+            }
+        );
     });
 
     return router;

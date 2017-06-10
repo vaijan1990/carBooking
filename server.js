@@ -28,7 +28,7 @@ var customerDetail = require('./models/customerDetail');
 
 /*** Routes import ***/
 var carRoutes = require('./routes/carCollectionRoute')(rentalCar);
-var customerRoutes = require('./routes/customerCollectionRoute')(customerDetail);
+var customerRoutes = require('./routes/customerCollectionRoute')(customerDetail,rentalCar);
 var viewRoutes = require('./routes/viewRoute');
 
 
