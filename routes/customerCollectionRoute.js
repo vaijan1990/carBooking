@@ -104,19 +104,40 @@ module.exports = (customerDetail,rentalCar) => {
     router.post('/checkout', (request, response) => {
 
         var user = request.user;
-        var carIds = request.body.carIds;
+        var carIds = request.body.carIds, startdate = request.body.startdate, enddate = request.body.enddate;
         var cars = [];
 
-        console.log("this is the user", user);
+        console.log("this is the user", user, startdate, enddate);
         rentalCar.find({
             '_id': {$in: carIds}
         },
             (err, cars)=> {
              cars.push(cars);
              console.log(cars);
-                 response.render('checkoutForm', {bodytag: 'registerBody', cars: cars, user: user});
+                 response.render('checkoutForm', {bodytag: 'registerBody', carIds:carIds, cars: cars, user: user, startdate: startdate, enddate: enddate});
             }
         );
+    });
+
+    router.post('/confirm', (request, response) => {
+
+        var user = request.user;
+        var selectedcarIds = request.body.selectedcarIds;
+        var cars = [];
+
+        console.log("this is the user", user, selectedcarIds);
+        // rentalCar.find({
+        //     '_id': {$in: carIds}
+        // },
+        //     (err, cars)=> {
+        //      cars.push(cars);
+        //      console.log("in confirm");
+        //          response.render('checkoutForm', {bodytag: 'registerBody', cars: cars, user: user, confirmed: true});
+        //     }
+        // );
+
+         response.render('checkoutForm', {bodytag: 'registerBody', cars: cars, user: user, confirmed: true, confirmedenddate: request.body.confirmedenddate, confirmedstartdate: request.body.confirmedstartdate});
+
     });
 
     return router;

@@ -17,6 +17,9 @@ block main-content
     div(class='container')
       if carData
         h5(id="cars-available-header")  Available cars between #{startdate} and #{enddate}
+
+        input(id="startdate", type="hidden", name="startdate", value=startdate)
+        input(id="enddate", type="hidden", name="enddate", value=enddate)
         table(class='table mx-auto table-bordered car-table-container')
           thead(class='thead-inverse')
             tr()

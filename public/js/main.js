@@ -1,6 +1,7 @@
 $(function () {
 
     var carsIds = [];
+    var startdate, enddate;
 
     //add warning color when a field is not filled in
     $(document).bind('change', function(e){
@@ -15,6 +16,9 @@ $(function () {
 
         var carTableRow = $(e.target).parents('tr');
         var extractedId;
+        startdate = document.getElementById('startdate').value;
+        enddate = document.getElementById('enddate').value;
+        console.log('dates', startdate, enddate);
 
         if(carTableRow.hasClass('customer-selection')){
             carTableRow.removeClass('customer-selection');
@@ -39,8 +43,16 @@ $(function () {
     });
 
     $('#sign-up').on('click', ()=> {
+      console.log(startdate, enddate);
+        $.redirect('../customers/checkout', {carIds: carsIds, startdate: startdate, enddate: enddate})
 
-        $.redirect('../customers/checkout', {carIds: carsIds})
+    });
+    $('#confirm').on('click', ()=> {
+        selectedcarIds = document.getElementById('carId').value;
+        var confirmedstartdate = document.getElementById('startdate').value;
+        var confirmedenddate = document.getElementById('enddate').value;
+        console.log('dates', startdate, enddate, selectedcarIds);
+        $.redirect('../customers/confirm', {selectedcarIds: selectedcarIds, confirmedstartdate: confirmedstartdate, confirmedenddate: confirmedenddate})
 
-    })
+    });
 });
