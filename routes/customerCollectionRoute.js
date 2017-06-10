@@ -106,8 +106,8 @@ module.exports = (customerDetail,rentalCar) => {
         var user = request.user;
         var carIds = request.body.carIds, startdate = request.body.startdate, enddate = request.body.enddate;
         var cars = [];
-
-        console.log("this is the user", user, startdate, enddate);
+        console.log(typeof carIds);
+        console.log("this is the user", carIds, startdate, enddate);
         rentalCar.find({
             '_id': {$in: carIds}
         },
@@ -122,21 +122,23 @@ module.exports = (customerDetail,rentalCar) => {
     router.post('/confirm', (request, response) => {
 
         var user = request.user;
-        var selectedcarIds = request.body.selectedcarIds;
+        var selectedcarIds= JSON.parse(request.body.selectedcarIds);
+        var confirmedenddate  =request.body.confirmedenddate;
+        var confirmedstartdate = request.body.confirmedstartdate;
         var cars = [];
-
         console.log("this is the user", user, selectedcarIds);
-        // rentalCar.find({
-        //     '_id': {$in: carIds}
-        // },
-        //     (err, cars)=> {
-        //      cars.push(cars);
-        //      console.log("in confirm");
-        //          response.render('checkoutForm', {bodytag: 'registerBody', cars: cars, user: user, confirmed: true});
-        //     }
-        // );
+        // Find the car by id and set it's booked value to false;
 
-         response.render('checkoutForm', {bodytag: 'registerBody', cars: cars, user: user, confirmed: true, confirmedenddate: request.body.confirmedenddate, confirmedstartdate: request.body.confirmedstartdate});
+        rentalCar.findByIdAndUpdate(
+              {$in: selectedcarIds}, {startdate: confirmedstartdate, enddate: confirmedenddate}, {new: true},
+              (err, cars) => {
+              if(err)
+                console.log(err);
+             response.render('checkoutForm', {bodytag: 'registerBody', cars: cars, user: user, confirmed: true, confirmedenddate: confirmedenddate, confirmedstartdate: confirmedstartdate});
+            }
+        );
+        
+
 
     });
 
