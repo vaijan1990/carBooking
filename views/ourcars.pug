@@ -27,8 +27,10 @@ block main-content
               th(scope='row') Seats
               th(scope='row') Towbar
               th(scope='row') Price/Day
-              if withinRange
-                  th(scope='col') Bookable again
+              if startDateWithinRange
+                  th(scope='col') Booked from
+                  if endDateWithinRange
+                  th(scope="col") Available From
           tbody(id="car-table-body")
             - for (var x = 0; x < carData.length; x++)
               tr(data-identifier= carData[x].id)
@@ -40,6 +42,9 @@ block main-content
                   .div= carData[x].towbar
                 td
                   .div= carData[x].priceperday
+                if carData[x].startdate
+                    td
+                      .div= moment(carData[x].startdate).format('YYYY.MM.DD')
                 if carData[x].enddate
                     td
                       .div= moment(carData[x].enddate).format('YYYY.MM.DD')

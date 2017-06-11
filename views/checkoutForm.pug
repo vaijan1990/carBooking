@@ -12,11 +12,15 @@ block bookingOrderCard
               h5(class="card-title") Your booking summary
               img(class="card-img-top img-fluid" src="../images/audi.png" alt="audi")
               ul(class="list-group list-group-flush")
-                  li(class="list-group-item")= cars[i].priceperday
-                  li(class="list-group-item")= cars[i].brand
-                  li(class="list-group-item")= cars[i].seats
+                  li(class="list-group-item") Price/Day: #{cars[i].priceperday} SEK
+                  li(class="list-group-item") Brand: #{cars[i].brand}
+                  li(class="list-group-item") Seats: #{cars[i].seats}
+                  if cars[i].towbar
+                    li(class="list-group-item") Towbar: Yes
+                  else
+                    li(class="list-group-item") Towbar: No
             div(class="card-block")
-              a(href="../ourcars") link back to booking page
+              a(href="../") link back to booking page
         if !confirmed
           input(class="btn btn-lg btn-danger" value='Confirm Booking' id="confirm" type='button')
         else

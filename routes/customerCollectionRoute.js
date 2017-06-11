@@ -127,9 +127,9 @@ module.exports = (customerDetail,rentalCar) => {
         var confirmedstartdate = request.body.confirmedstartdate;
         var cars = [];
         console.log("this is the user", user, selectedcarIds);
-        // Find the car by id and set it's booked value to false;
 
         rentalCar.findByIdAndUpdate(
+
               {$in: selectedcarIds}, {startdate: confirmedstartdate, enddate: confirmedenddate}, {new: true},
               (err, cars) => {
               if(err)
@@ -137,9 +137,6 @@ module.exports = (customerDetail,rentalCar) => {
              response.render('checkoutForm', {bodytag: 'registerBody', cars: cars, user: user, confirmed: true, confirmedenddate: confirmedenddate, confirmedstartdate: confirmedstartdate});
             }
         );
-        
-
-
     });
 
     return router;

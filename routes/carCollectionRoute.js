@@ -49,9 +49,12 @@ module.exports = (rentalCar) => {
             var today = new Date(Date.now());
             const requestedFromDate = new Date(request.body.date['from']);
             const requestedToDate = new Date(request.body.date['to']);
+            console.log(requestedFromDate);
+
             var datesRange = [];
             var filteredCars;
             var endDateWithinRange = false;
+            var startDateWithinRange = false;
 
             var carBookedStartDate;
             var carBookedEndDate;
@@ -89,8 +92,13 @@ module.exports = (rentalCar) => {
                         for (var i = 0; i < datesRange.length - 1; i++) {
 
                             if (datesRange[i].toDateString() === carBookedEndDate) {
-                                endDateWithinRange = true;
 
+                                endDateWithinRange = true;
+                                return car;
+                            }
+
+                            if( datesRange[i].toDateString() === carBookedStartDate){
+                                startDateWithinRange = true;
                                 return car;
                             }
 
@@ -108,10 +116,12 @@ module.exports = (rentalCar) => {
                 var formattedEndDate = requestedToDate.toDateString();
 
                 response.render('ourcars', {
+
                     carData: filteredCars,
                     startdate: formattedStartDate,
                     enddate: formattedEndDate,
-                    withinRange: endDateWithinRange
+                    endDateWithinRange: endDateWithinRange,
+                    startDateWithinRange: startDateWithinRange
                 });
             });
         }

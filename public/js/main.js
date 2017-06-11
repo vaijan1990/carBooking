@@ -48,10 +48,14 @@ $(function () {
 
     });
     $('#confirm').on('click', ()=> {
+
         selectedcarIds = document.getElementById('carId').value;
+
         var confirmedstartdate = document.getElementById('startdate').value;
         var confirmedenddate = document.getElementById('enddate').value;
+
         console.log('dates', startdate, enddate, selectedcarIds);
+
         $.redirect('../customers/confirm', {selectedcarIds: selectedcarIds, confirmedstartdate: confirmedstartdate, confirmedenddate: confirmedenddate})
 
     });
