@@ -1,6 +1,6 @@
 div(class='intro-text text-center datepicker-container')
   h2 Rent your car now!!
-  form(action="/cars/available" method="POST" name="checkAvailibilty" id="checkAvailibilty")
+  form(class="form-group" action="/cars/available" method="POST" name="checkAvailibilty" id="checkAvailibilty")
     if wrongDate
       div(class="alert alert-danger")
         a(class="close" data-dismiss="alert" href="#") x

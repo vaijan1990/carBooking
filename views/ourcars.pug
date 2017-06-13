@@ -38,8 +38,12 @@ block main-content
                   .div= carData[x].brand
                 td
                   .div= carData[x].seats
-                td
-                  .div= carData[x].towbar
+                if carData[x].towbar
+                    td
+                      .div Yes
+                if !carData[x].towbar
+                    td
+                      .div No
                 td
                   .div= carData[x].priceperday
                 if carData[x].startdate
@@ -49,27 +53,6 @@ block main-content
                     td
                       .div= moment(carData[x].enddate).format('YYYY.MM.DD')
         input(class="btn btn-lg btn-primary" value='Continue to checkout' id="sign-up" type='submit')
-
-    if !carData
-
-      h2(class='text-center') Our cars
-        div(class='d-flex flex-row justify-content-center align-items-stretch')
-          button(class='filtercars' id='automatic') Automatic
-          button(class='filtercars' id='towbar') Towbar
-          button(class='filtercars' id='seats2') 2 seats
-          button(class='filtercars' id='seats5') 5 seats
-          button(class='filtercars' id='seats7') 7 seats
-
-        table(class='table table-hover mx-auto car-table-container')
-          thead(class='thead-inverse')
-            tr
-              th(scope='col') Brand
-              th(scope='col') Seats
-              th(scope='col') Automatic
-              th(scope='col') Towbar
-              th(scope='col') Price/day
-          tbody(id='car-table')
-
 
 
       //Scroll to Top Button (Only visible on small and extra-small screen sizes)

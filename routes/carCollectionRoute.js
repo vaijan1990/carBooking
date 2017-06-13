@@ -131,8 +131,6 @@ module.exports = (rentalCar) => {
 
     });
 
-    //Find every car in the collection with the specified number of seats.
-    // This route will be localhost:3000/cars/seats/enternumberofseats
     router.get('/seats/:seats', (request, response) => {
 
         var seats = request.params.seats;
@@ -179,6 +177,10 @@ module.exports = (rentalCar) => {
             console.log(result);
             response.send('you have deleted the following car: ' + '\n' + result);
         })
+    });
+
+    router.get('/images', (request, response) => {
+        response.render('imageGallery', {bodytag: 'registerBody'});
     });
 
     return router;

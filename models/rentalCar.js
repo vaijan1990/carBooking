@@ -14,8 +14,8 @@ var rentalCarSchema = new mongoose.Schema({
     enddate: {
       type: Date,
       required: true
-    }
-
+    },
+    bookerid: String
 });
 
 var rentalCar = mongoose.model('rentalCar', rentalCarSchema);
