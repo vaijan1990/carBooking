@@ -61,9 +61,13 @@ block main-content
                 if carData[x].startdate
                     td
                       .div= moment(carData[x].startdate).format('YYYY.MM.DD')
+                else
+                    td -
                 if carData[x].enddate
                     td
                       .div= moment(carData[x].enddate).format('YYYY.MM.DD')
+                else
+                    td  -
         input(class="btn btn-lg btn-primary" value='Continue to checkout' id="sign-up" type='submit')
 
 
