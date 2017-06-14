@@ -131,7 +131,7 @@ module.exports = (rentalCar) => {
 
     });
 
-    router.get('/seats/:seats', (request, response) => {
+    router.get('/available/:seats', (request, response) => {
 
         var seats = request.params.seats;
         rentalCar.find({seats: seats}, (err, cars) => {

@@ -25,7 +25,19 @@ block main-content
             tr()
               th(scope='row') Brand
               th(scope='row') Seats
+                select#filterSeat(style='display:inline-block')
+                  option(disabled='', selected='') Select
+                  option(value='5') 5
+                  option(value='7') 7
+                  option(value='2') 2
+                  option(value='all') All
               th(scope='row') Towbar
+                select#filterTowbar(style='display:inline-block')
+                  option(disabled='', selected='') Select
+                  option(value='Yes') Yes
+                  option(value='No') No
+                  option(value='all') All
+
               th(scope='row') Price/Day
               if startDateWithinRange
                   th(scope='col') Booked from
@@ -33,7 +45,7 @@ block main-content
                   th(scope="col") Available From
           tbody(id="car-table-body")
             - for (var x = 0; x < carData.length; x++)
-              tr(data-identifier= carData[x].id)
+              tr(data-identifier= carData[x].id class="content")
                 td
                   .div= carData[x].brand
                 td

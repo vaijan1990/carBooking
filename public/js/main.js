@@ -69,6 +69,41 @@ $(function () {
         $.redirect('/customers/summary')
     });
 
+    $('#filterSeat').on('change', () => {
+          var rex = new RegExp($('#filterSeat').val());
+          if(rex =="/all/")
+          {
+              $('#filterSeat').val('');
+            		$('.content').show();
+            	}
+
+          else{
+			$('.content').hide();
+			$('.content').filter(function() {
+         var $t = $(this).children(":eq(" + "1" + ")");
+			 return rex.test($t.text());
+			}).show();
+	   }
+});
+
+    $('#filterTowbar').on('change', () => {
+       rex = new RegExp($('#filterTowbar').val());
+      if(rex =="/all/")
+      {
+          $('#filterTowbar').val('');
+            $('.content').show();
+          }
+
+      else{
+  $('.content').hide();
+  $('.content').filter(function() {
+     var $t = $(this).children(":eq(" + "2" + ")");
+   return rex.test($t.text());
+  }).show();
+ }
+        });
+
+
     $('#booking-order-form').on('click', (e) => {
         e.preventDefault();
 
@@ -79,5 +114,6 @@ $(function () {
            id = target.data('identifier')
            $.redirect('/customers/cancel', {carId: id})
        }
-    })
+    });
+
 });
