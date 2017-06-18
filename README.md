@@ -3,7 +3,7 @@
 A schoolproject for the course advanced webb application development for the vocational school Lernia.
 
 ### By Who ?
-Christian Alsén, Håkan Arnoldsson and Vasshnavi Janani
+Christian Alsén, Håkan Arnoldsson and Vaisshnavi Janani
 
 ### Who has done what ?
 
@@ -21,7 +21,7 @@ Christian Alsén, Håkan Arnoldsson and Vasshnavi Janani
 * Mocha unit testing for most endpoints
 
 ### By Who ?
-Christian Alsén, Håkan Arnoldsson and Vasshnavi Janani
+Christian Alsén, Håkan Arnoldsson and Vaisshnavi Janani
 
 ### Who has done what ?
 
@@ -31,7 +31,7 @@ Christian Alsén, Håkan Arnoldsson and Vasshnavi Janani
 * Datetime picker implementation
 * Routing implementation
 
-**Vasshnavi Janani** -
+**Vaisshnavi Janani** -
 * Filtering for specific features of a car
 * Booking functionality
 * Routing implementation
