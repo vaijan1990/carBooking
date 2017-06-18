@@ -47,8 +47,8 @@ module.exports = (rentalCar) => {
         if (request.body.startdate && request.body.enddate) {
 
             var today = new Date(Date.now());
-            const requestedFromDate = new Date(request.body.date['from']);
-            const requestedToDate = new Date(request.body.date['to']);
+            const requestedFromDate = new Date(request.body.date_from);
+            const requestedToDate = new Date(request.body.date_to);
             console.log(requestedFromDate);
 
             var datesRange = [];

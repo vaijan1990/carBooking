@@ -31,8 +31,20 @@ describe('carRoutes', () => {
             })
     })
 
+    it('POST/available route should get available cars not booked on given startdate ', (done) => {
+
+        //Test case 3
+        request(app)
+            .post('/cars/available')
+            .type('form')
+            .send({date_from: '2017-06-28', date_to: '2017-06-30'})
+            .expect(200)
+            .end((err, response) => {
+            console.log(response.body);
+            done(err)
+            })
+    });
+
+
 
 });
-
-
-
