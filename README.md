@@ -22,14 +22,14 @@ Christian Alsén, Håkan Arnoldsson and Vasshnavi Janani
 * Mocha unit testing for most endpoints
 
 =======
-### By Who ? 
+### By Who ?
 Christian Alsén, Håkan Arnoldsson and Vasshnavi Janani
 
-### Who has done what ? 
+### Who has done what ?
 
 **Håkan Arnoldsson** - 
 
-* Main theme for the page, 
+* Main theme for the page,
 * Datetime picker implementation
 * Routing implementation
 
@@ -37,7 +37,9 @@ Christian Alsén, Håkan Arnoldsson and Vasshnavi Janani
 * Filtering for specific features of a car
 * Booking functionality
 * Routing implementation
->>>>>>> origin/master
+* Customer Database
+* Mocha unit testing
+
 
 **Christian Ahlsén** -
 * Login system Implementation
@@ -45,8 +47,3 @@ Christian Alsén, Håkan Arnoldsson and Vasshnavi Janani
 * Cancel booking functionality
 * Database setup
 * Mocha unit testing
-<<<<<<< HEAD
-=======
-
-
->>>>>>> origin/master
