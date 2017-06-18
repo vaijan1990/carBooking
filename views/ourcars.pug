@@ -18,51 +18,58 @@ block main-content
     div(class='container')
       if carData
         h5(id="cars-available-header")  Available cars between #{startdate} and #{enddate}
+
+        input(id="startdate", type="hidden", name="startdate", value=startdate)
+        input(id="enddate", type="hidden", name="enddate", value=enddate)
         table(class='table mx-auto table-bordered car-table-container')
           thead(class='thead-inverse')
             tr()
               th(scope='row') Brand
               th(scope='row') Seats
+                select#filterSeat(style='display:inline-block')
+                  option(disabled='', selected='') Select
+                  option(value='5') 5
+                  option(value='7') 7
+                  option(value='2') 2
+                  option(value='all') All
               th(scope='row') Towbar
+                select#filterTowbar(style='display:inline-block')
+                  option(disabled='', selected='') Select
+                  option(value='Yes') Yes
+                  option(value='No') No
+                  option(value='all') All
+
               th(scope='row') Price/Day
-              if withinRange
-                  th(scope='col') Bookable again
+              if startDateWithinRange
+                  th(scope='col') Booked from
+                  if endDateWithinRange
+                  th(scope="col") Available From
           tbody(id="car-table-body")
             - for (var x = 0; x < carData.length; x++)
-              tr(data-identifier= carData[x].id)
+              tr(data-identifier= carData[x].id class="content")
                 td
                   .div= carData[x].brand
                 td
                   .div= carData[x].seats
-                td
-                  .div= carData[x].towbar
+                if carData[x].towbar
+                    td
+                      .div Yes
+                if !carData[x].towbar
+                    td
+                      .div No
                 td
                   .div= carData[x].priceperday
+                if carData[x].startdate
+                    td
+                      .div= moment(carData[x].startdate).format('YYYY.MM.DD')
+                else
+                    td -
                 if carData[x].enddate
                     td
                       .div= moment(carData[x].enddate).format('YYYY.MM.DD')
+                else
+                    td  -
         input(class="btn btn-lg btn-primary" value='Continue to checkout' id="sign-up" type='submit')
-
-    if !carData
-
-      h2(class='text-center') Our cars
-        div(class='d-flex flex-row justify-content-center align-items-stretch')
-          button(class='filtercars' id='automatic') Automatic
-          button(class='filtercars' id='towbar') Towbar
-          button(class='filtercars' id='seats2') 2 seats
-          button(class='filtercars' id='seats5') 5 seats
-          button(class='filtercars' id='seats7') 7 seats
-
-        table(class='table table-hover mx-auto car-table-container')
-          thead(class='thead-inverse')
-            tr
-              th(scope='col') Brand
-              th(scope='col') Seats
-              th(scope='col') Automatic
-              th(scope='col') Towbar
-              th(scope='col') Price/day
-          tbody(id='car-table')
-
 
 
       //Scroll to Top Button (Only visible on small and extra-small screen sizes)

@@ -4,17 +4,17 @@ block extra-css
 block extra-js
 block header
 block main-content
-  div(class="container registration-confirmed rounded registrationbox")
-          div(class="row")
-              div(class="col-sm-8 col-md-8 col-lg-8 mx-auto")
-                  #success_msg
-                      if success_msg
-                          div(class="alert alert-success")= success_msg
-                            a(href="/") here
-                      else if error_msg
-                          div(class="alert alert-danger")= error_msg
-                            a(href="/register") return to registration
-                      else if error
-                          div(class="alert alert-danger")= error
-                            a(href="/register") return to registration
+    div(class="container registration-confirmed rounded registrationbox")
+        div(class="row")
+            div(class="col-sm-8 col-md-8 col-lg-8 mx-auto")
+                #success_msg
+                    if success_msg
+                        div(class="alert alert-success")= success_msg
+                        a(href="/") here
+                    else if error_msg
+                        div(class="alert alert-danger")= error_msg
+                        a(href="/register") return to registration
+                    else if error
+                        div(class="alert alert-danger")= error
+                        a(href="/register") return to registration
     

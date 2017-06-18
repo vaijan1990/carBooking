@@ -1,0 +1,35 @@
+extends mainlayout.pug
+
+block extra-css
+block extra-js
+block header
+    header(class='masthead')
+
+block main-content
+        if isEmpty
+            div(class="card mx-auto" style="width: 30rem" id="booking-order-card-empty")
+                div(class="card-block")
+                    h5(class="card-title") This is supposed to be you booking summary
+                    img(class="card-img-top img-fluid" src="http://loremflickr.com/320/240/car" alt="audi")
+                div(class="card-block")
+                    p(class="card-text") You don't seem to have any cars booked at the moment
+                    a(href="../") go back and start booking !
+        else if !isEmpty
+            div(id="booking-order-form")
+                - for (var i = 0; i < cars.length; i++)
+                    div(class="card mx-auto booking-order-card" style="width: 30rem")
+                        div(class="card-block")
+                            h5(class="card-title") Your booking summary
+                            img(class="card-img-top img-fluid" src="../images/audi.png" alt="audi")
+                            ul(class="list-group list-group-flush")
+                                li(class="list-group-item") Price/Day: #{cars[i].priceperday} SEK
+                                li(class="list-group-item") Brand: #{cars[i].brand}
+                                li(class="list-group-item") Seats: #{cars[i].seats}
+                                if cars[i].towbar
+                                    li(class="list-group-item") Towbar: Yes
+                                else
+                                    li(class="list-group-item") Towbar: No
+                        div(class="card-block")
+                            a(href="../") back to booking page
+                        div(class="card-block")
+                            input(class="btn btn-lg btn-danger btn-block confirm-cancel" type="submit" value="Cancel this booking" data-identifier=cars[i]._id)
