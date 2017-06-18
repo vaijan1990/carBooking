@@ -47,11 +47,14 @@ module.exports = (rentalCar) => {
         if (request.body.startdate && request.body.enddate) {
 
             var today = new Date(Date.now());
-            const requestedFromDate = new Date(request.body.date['from']);
-            const requestedToDate = new Date(request.body.date['to']);
+            const requestedFromDate = new Date(request.body.date_from);
+            const requestedToDate = new Date(request.body.date_to);
+            console.log(requestedFromDate);
+
             var datesRange = [];
             var filteredCars;
             var endDateWithinRange = false;
+            var startDateWithinRange = false;
 
             var carBookedStartDate;
             var carBookedEndDate;
@@ -89,8 +92,13 @@ module.exports = (rentalCar) => {
                         for (var i = 0; i < datesRange.length - 1; i++) {
 
                             if (datesRange[i].toDateString() === carBookedEndDate) {
-                                endDateWithinRange = true;
 
+                                endDateWithinRange = true;
+                                return car;
+                            }
+
+                            if( datesRange[i].toDateString() === carBookedStartDate){
+                                startDateWithinRange = true;
                                 return car;
                             }
 
@@ -108,10 +116,12 @@ module.exports = (rentalCar) => {
                 var formattedEndDate = requestedToDate.toDateString();
 
                 response.render('ourcars', {
+
                     carData: filteredCars,
                     startdate: formattedStartDate,
                     enddate: formattedEndDate,
-                    withinRange: endDateWithinRange
+                    endDateWithinRange: endDateWithinRange,
+                    startDateWithinRange: startDateWithinRange
                 });
             });
         }
@@ -121,9 +131,7 @@ module.exports = (rentalCar) => {
 
     });
 
-    //Find every car in the collection with the specified number of seats.
-    // This route will be localhost:3000/cars/seats/enternumberofseats
-    router.get('/seats/:seats', (request, response) => {
+    router.get('/available/:seats', (request, response) => {
 
         var seats = request.params.seats;
         rentalCar.find({seats: seats}, (err, cars) => {
@@ -147,6 +155,7 @@ module.exports = (rentalCar) => {
             response.send(cars);
         })
     });
+
     //add a new rental car to the database. This route will be localhost:3000/new
     router.post('/new', (request, response) => {
 
@@ -168,6 +177,10 @@ module.exports = (rentalCar) => {
             console.log(result);
             response.send('you have deleted the following car: ' + '\n' + result);
         })
+    });
+
+    router.get('/images', (request, response) => {
+        response.render('imageGallery', {bodytag: 'registerBody'});
     });
 
     return router;

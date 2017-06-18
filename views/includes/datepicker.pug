@@ -1,14 +1,14 @@
 div(class='intro-text text-center datepicker-container')
   h2 Rent your car now!!
-  form(action="/cars/available" method="POST" name="checkAvailibilty" id="checkAvailibilty")
+  form(class="form-group" action="/cars/available" method="POST" name="checkAvailibilty" id="checkAvailibilty")
     if wrongDate
       div(class="alert alert-danger")
         a(class="close" data-dismiss="alert" href="#") x
         p= wrongDate
     div(class='input-group input-daterange justify-content-center')
       input(class="form-input" data-provide='datepicker' name="startdate" id='datepicker-from' placeholder='Start Date')
-      input(data-provide='datepicker' name="date[from]" id='datepicker-from-hidden' type='hidden')
+      input(data-provide='datepicker' name="date_from" id='datepicker-from-hidden' type='hidden')
       span(class='input-group-addon') &nbsp;to&nbsp;
       input(class="form-input" data-provide='datepicker' name="enddate" id='datepicker-to' placeholder='End Date')
-      input(data-provide='datepicker' name="date[to]" id='datepicker-to-hidden'  type='hidden')
+      input(data-provide='datepicker' name="date_to" id='datepicker-to-hidden'  type='hidden')
     button(type='submit' class="btn btn-lg btn-danger" id="check-available") Check availability
