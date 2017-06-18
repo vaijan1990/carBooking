@@ -17,12 +17,21 @@ describe('carRoutes', () => {
             .expect(200, done)
     });
 
-    // Test case 1
+
     it('GET/cars/images route should return http status code 200 and Content-Type text/html', (done) => {
 
         //Test case 1
         request(app)
             .get('/cars/images')
+            .expect("Content-Type", "text/html; charset=utf-8")
+            .expect(200, done)
+    });
+
+    it('GET/aboutus route should return http status code 200 and Content-Type text/html', (done) => {
+
+        //Test case 1
+        request(app)
+            .get('/aboutus')
             .expect("Content-Type", "text/html; charset=utf-8")
             .expect(200, done)
     });
