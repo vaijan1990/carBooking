@@ -2,7 +2,6 @@
 ### What is it ?
 A schoolproject for the course advanced webb application development for the vocational school Lernia.
 
-<<<<<<< HEAD
 ### By Who ?
 Christian Alsén, Håkan Arnoldsson and Vasshnavi Janani
 
@@ -21,7 +20,6 @@ Christian Alsén, Håkan Arnoldsson and Vasshnavi Janani
 * Customer database initial set up
 * Mocha unit testing for most endpoints
 
-=======
 ### By Who ?
 Christian Alsén, Håkan Arnoldsson and Vasshnavi Janani
 
