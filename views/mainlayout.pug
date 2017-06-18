@@ -24,7 +24,7 @@ html
         div(class='collapse navbar-collapse' id='main-navbar-collapse')
           ul(class='navbar-nav ml-auto')
             li(class='nav-item')
-              a(href='/ourcars' class='nav-link') Our cars
+              a(href='/cars/images' class='nav-link') Our cars
             li(class='nav-item')
               a(href='/aboutus' class='nav-link') About us
             li(class='nav-item')
@@ -33,11 +33,17 @@ html
                    a(id="loginId" class='nav-link' data-toggle="modal" data-target="#exampleModal") Login
                 if user
                   a( class='nav-link' href="../customers/logout") Log out
+            li(class="nav-item")
+                if user
+                    a(class='nav-link' href="../customers/member") Bookings
+
+
 
     include includes/loginform
     block header
-    block main-content
     block bookingOrderCard
+    block main-content
+    block image-gallery
 
     footer(class='text-center')
       div(class='footer-above')
