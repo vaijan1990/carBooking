@@ -1,5 +1,6 @@
 body {
   overflow: auto;
+  font-family: Georgia, sans-serif;
 }
 
 footer .footer-above {
@@ -66,6 +67,19 @@ footer .footer-below {
   font-size: 3em;
 }
 
+.image-gallery{
+  margin-top: 15%;
+  margin-bottom: 10%;
+  color: #e6f09e;
+}
+.image-text{
+  margin-bottom: 10%;
+}
+
+.booking-order-card{
+  margin-bottom: 5%;
+}
+
 #aboutus{
   margin-top: 10%;
 }
@@ -100,3 +114,14 @@ footer .footer-below {
     margin-bottom: 3%;
   }
 
+#booking-order-card-empty{
+  margin-bottom: 10%;
+}
+
+#sign-up {
+  text-align: center;
+}
+
+#order-confirmed{
+  margin-bottom: 20%;
+}

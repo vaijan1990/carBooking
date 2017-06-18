@@ -8,8 +8,6 @@ var customerDetailSchema = new mongoose.Schema({
     email: String,
     username: String,
     password: String,
-    from: String,
-    to: String
 });
 
 customerDetailSchema.plugin(passportLocalMongoose);
