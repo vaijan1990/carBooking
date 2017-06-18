@@ -36,16 +36,6 @@ describe('carRoutes', () => {
             .expect(200, done)
     });
 
-
-      it('GET/loggedin route should return http status code 200 and Content-Type text/html', (done) => {
-
-            //Test case 1
-            request(app)
-                .get('/loggedin')
-                .expect("Content-Type", "text/html; charset=utf-8")
-                .expect(200, done)
-        });
-
     it("POST/cars/new route should add a new car ",(done) => {
 
         request(app)
